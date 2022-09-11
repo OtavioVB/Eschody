@@ -1,0 +1,12 @@
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\bin\Debug\net6.0\Eschody.Domain.deps.json
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\bin\Debug\net6.0\Eschody.Domain.dll
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\bin\Debug\net6.0\Eschody.Domain.pdb
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\obj\Debug\net6.0\Eschody.Domain.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\obj\Debug\net6.0\Eschody.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\obj\Debug\net6.0\Eschody.Domain.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\obj\Debug\net6.0\Eschody.Domain.AssemblyInfo.cs
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\obj\Debug\net6.0\Eschody.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\obj\Debug\net6.0\Eschody.Domain.dll
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\obj\Debug\net6.0\refint\Eschody.Domain.dll
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\obj\Debug\net6.0\Eschody.Domain.pdb
+C:\Users\Admin\Desktop\Eschody\Eschody.Domain\obj\Debug\net6.0\ref\Eschody.Domain.dll

@@ -1,0 +1,15 @@
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\bin\Debug\net6.0\Eschody.Infrascructure.deps.json
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\bin\Debug\net6.0\Eschody.Infrascructure.dll
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\bin\Debug\net6.0\Eschody.Infrascructure.pdb
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\obj\Debug\net6.0\Eschody.Infrascructure.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\obj\Debug\net6.0\Eschody.Infrascructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\obj\Debug\net6.0\Eschody.Infrascructure.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\obj\Debug\net6.0\Eschody.Infrascructure.AssemblyInfo.cs
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\obj\Debug\net6.0\Eschody.Infrascructure.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\obj\Debug\net6.0\Eschody.Infrascructure.dll
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\obj\Debug\net6.0\refint\Eschody.Infrascructure.dll
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\obj\Debug\net6.0\Eschody.Infrascructure.pdb
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\obj\Debug\net6.0\ref\Eschody.Infrascructure.dll
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\bin\Debug\net6.0\Eschody.Domain.dll
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\bin\Debug\net6.0\Eschody.Domain.pdb
+C:\Users\Admin\Desktop\Eschody\Eschody.Infrascructure\obj\Debug\net6.0\Eschody.Infrascructure.csproj.CopyComplete
