@@ -2,29 +2,27 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using Eschody.Application.Areas.Identity.Data;
+using Eschody.Infrascructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System.Text.Encodings.Web;
 
 namespace Eschody.Application.Areas.Identity.Pages.Account.Manage
 {
     public class EmailModel : PageModel
     {
-        private readonly UserManager<EschodyApplicationUser> _userManager;
-        private readonly SignInManager<EschodyApplicationUser> _signInManager;
+        private readonly UserManager<UserModelIdentity> _userManager;
+        private readonly SignInManager<UserModelIdentity> _signInManager;
         private readonly IEmailSender _emailSender;
 
         public EmailModel(
-            UserManager<EschodyApplicationUser> userManager,
-            SignInManager<EschodyApplicationUser> signInManager,
+            UserManager<UserModelIdentity> userManager,
+            SignInManager<UserModelIdentity> signInManager,
             IEmailSender emailSender)
         {
             _userManager = userManager;
@@ -74,7 +72,7 @@ namespace Eschody.Application.Areas.Identity.Pages.Account.Manage
             public string NewEmail { get; set; }
         }
 
-        private async Task LoadAsync(EschodyApplicationUser user)
+        private async Task LoadAsync(UserModelIdentity user)
         {
             var email = await _userManager.GetEmailAsync(user);
             Email = email;

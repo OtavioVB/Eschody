@@ -2,39 +2,32 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading;
-using System.Threading.Tasks;
+using Eschody.Infrascructure.Data;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Eschody.Application.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System.Text.Encodings.Web;
 
 namespace Eschody.Application.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<EschodyApplicationUser> _signInManager;
-        private readonly UserManager<EschodyApplicationUser> _userManager;
-        private readonly IUserStore<EschodyApplicationUser> _userStore;
-        private readonly IUserEmailStore<EschodyApplicationUser> _emailStore;
+        private readonly SignInManager<UserModelIdentity> _signInManager;
+        private readonly UserManager<UserModelIdentity> _userManager;
+        private readonly IUserStore<UserModelIdentity> _userStore;
+        private readonly IUserEmailStore<UserModelIdentity> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<EschodyApplicationUser> userManager,
-            IUserStore<EschodyApplicationUser> userStore,
-            SignInManager<EschodyApplicationUser> signInManager,
+            UserManager<UserModelIdentity> userManager,
+            IUserStore<UserModelIdentity> userStore,
+            SignInManager<UserModelIdentity> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -155,27 +148,27 @@ namespace Eschody.Application.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private EschodyApplicationUser CreateUser()
+        private UserModelIdentity CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<EschodyApplicationUser>();
+                return Activator.CreateInstance<UserModelIdentity>();
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(EschodyApplicationUser)}'. " +
-                    $"Ensure that '{nameof(EschodyApplicationUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(UserModelIdentity)}'. " +
+                    $"Ensure that '{nameof(UserModelIdentity)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
-        private IUserEmailStore<EschodyApplicationUser> GetEmailStore()
+        private IUserEmailStore<UserModelIdentity> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<EschodyApplicationUser>)_userStore;
+            return (IUserEmailStore<UserModelIdentity>)_userStore;
         }
     }
 }

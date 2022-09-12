@@ -2,26 +2,23 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using Eschody.Application.Areas.Identity.Data;
+using Eschody.Infrascructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
 
 namespace Eschody.Application.Areas.Identity.Pages.Account.Manage
 {
     public class DeletePersonalDataModel : PageModel
     {
-        private readonly UserManager<EschodyApplicationUser> _userManager;
-        private readonly SignInManager<EschodyApplicationUser> _signInManager;
+        private readonly UserManager<UserModelIdentity> _userManager;
+        private readonly SignInManager<UserModelIdentity> _signInManager;
         private readonly ILogger<DeletePersonalDataModel> _logger;
 
         public DeletePersonalDataModel(
-            UserManager<EschodyApplicationUser> userManager,
-            SignInManager<EschodyApplicationUser> signInManager,
+            UserManager<UserModelIdentity> userManager,
+            SignInManager<UserModelIdentity> signInManager,
             ILogger<DeletePersonalDataModel> logger)
         {
             _userManager = userManager;

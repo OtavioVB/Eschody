@@ -1,29 +1,23 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
-
-using System;
 using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-using Eschody.Application.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
+using Eschody.Infrascructure.Data;
 
 namespace Eschody.Application.Areas.Identity.Pages.Account
 {
     public class LoginWith2faModel : PageModel
     {
-        private readonly SignInManager<EschodyApplicationUser> _signInManager;
-        private readonly UserManager<EschodyApplicationUser> _userManager;
+        private readonly SignInManager<UserModelIdentity> _signInManager;
+        private readonly UserManager<UserModelIdentity> _userManager;
         private readonly ILogger<LoginWith2faModel> _logger;
 
         public LoginWith2faModel(
-            SignInManager<EschodyApplicationUser> signInManager,
-            UserManager<EschodyApplicationUser> userManager,
+            SignInManager<UserModelIdentity> signInManager,
+            UserManager<UserModelIdentity> userManager,
             ILogger<LoginWith2faModel> logger)
         {
             _signInManager = signInManager;

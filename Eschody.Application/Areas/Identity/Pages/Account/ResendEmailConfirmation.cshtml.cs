@@ -8,22 +8,22 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Eschody.Application.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Eschody.Infrascructure.Data;
 
 namespace Eschody.Application.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class ResendEmailConfirmationModel : PageModel
     {
-        private readonly UserManager<EschodyApplicationUser> _userManager;
+        private readonly UserManager<UserModelIdentity> _userManager;
         private readonly IEmailSender _emailSender;
 
-        public ResendEmailConfirmationModel(UserManager<EschodyApplicationUser> userManager, IEmailSender emailSender)
+        public ResendEmailConfirmationModel(UserManager<UserModelIdentity> userManager, IEmailSender emailSender)
         {
             _userManager = userManager;
             _emailSender = emailSender;

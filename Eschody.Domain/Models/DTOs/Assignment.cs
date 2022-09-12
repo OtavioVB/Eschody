@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace Eschody.Domain.Models.DTOs;
 
@@ -9,6 +9,5 @@ public sealed class Assignment
     public string Description { get; set; }
     public DateTime RequestMoment { get; set; }
     public DateTime Deadline { get; set; }
-    public int IdentifierUser { get; set; }
-    public IdentityUser IdentityUser { get; set; }
+    public Guid IdentifierUser { get; set; }
 }

@@ -7,28 +7,33 @@ namespace Eschody.Infrascructure.Repositories;
 
 public class AssignmentRepository : IAssignmentRepository
 {
-    private readonly EschodyApplicationContext _dbContext;
+    private readonly DataContext _dataContext;
 
-    public AssignmentRepository(EschodyApplicationContext dbContext)
+    public AssignmentRepository(DataContext dataContext)
     {
-        _dbContext = dbContext;
+        _dataContext = dataContext;
     }
 
+    /// <summary>
+    /// Adicionar novas tarefas do usuário de modo assíncrono
+    /// </summary>
+    /// <param name="assignment">Tarefa do Usuário</param>
+    /// <returns>Validar todos os campos</returns>
     public async Task InsertNewAssingmentAsync(Assignment assignment)
     {
-        await _dbContext.AddAsync(assignment);
-        await _dbContext.SaveChangesAsync();
+        await _dataContext.AddAsync(assignment);
+        await _dataContext.SaveChangesAsync();
     }
 
     public async Task DeleteAssignmentAsync(Assignment assignment)
     {
-        _dbContext.Assignments.Remove(assignment);
-        await _dbContext.SaveChangesAsync();
+        _dataContext.Assignments.Remove(assignment);
+        await _dataContext.SaveChangesAsync();
     }
 
     public async Task<Assignment?> GetAssignmentAsync(int id)
     {
-        var assignment = await _dbContext.Assignments.FindAsync(id);
+        var assignment = await _dataContext.Assignments.FindAsync(id);
 
         if (assignment != null)
         {
@@ -40,15 +45,15 @@ public class AssignmentRepository : IAssignmentRepository
         }
     }
 
-    public List<Assignment> GetAssignmentsAsync(int userId)
+    public async Task<List<Assignment>> GetAssignmentsAsync(Guid userId)
     {
-        var assingment = _dbContext.Assignments.Where(p => p.IdentifierUser == userId).ToList();
-        return assingment;
+        var assignment = await _dataContext.Assignments.Where(p => p.IdentifierUser == userId).ToListAsync();
+        return assignment;
     }
 
     public async Task UpdateAssignmentAsync(Assignment assignment)
     {
-        _dbContext.Assignments.Update(assignment);
-        await _dbContext.SaveChangesAsync();
+        _dataContext.Assignments.Update(assignment);
+        await _dataContext.SaveChangesAsync();
     }
 }

@@ -3,7 +3,8 @@ using Eschody.Domain.Contracts.Infrascructure.Security.Cryptography;
 using Eschody.Infrascructure.Security.Cryptography;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
+using Eschody.Domain.Contracts.Infrascructure.Repositories;
+using Eschody.Infrascructure.Repositories;
 
 namespace Eschody.Application.Configuration;
 
@@ -20,12 +21,12 @@ public class Configure
     {
         var connectionString = _webApplicationBuilder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         
-        _webApplicationBuilder.Services.AddDbContext<EschodyApplicationContext>(options =>
+        _webApplicationBuilder.Services.AddDbContext<DataContext>(options =>
             options.UseSqlite(connectionString));
         _webApplicationBuilder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
         _webApplicationBuilder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            .AddEntityFrameworkStores<EschodyApplicationContext>();
+            .AddEntityFrameworkStores<DataContext>();
 
         AddDependences();
 
@@ -35,6 +36,7 @@ public class Configure
     private void AddDependences()
     {
         _webApplicationBuilder.Services.AddTransient<IHashEncrypter, HashEncrypter>();
+        _webApplicationBuilder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
     }
 
     public void CreateWebApplication()

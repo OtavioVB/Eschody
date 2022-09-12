@@ -2,12 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Eschody.Application.Areas.Identity.Data;
+using Eschody.Infrascructure.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +12,14 @@ namespace Eschody.Application.Areas.Identity.Pages.Account.Manage
 {
     public class ExternalLoginsModel : PageModel
     {
-        private readonly UserManager<EschodyApplicationUser> _userManager;
-        private readonly SignInManager<EschodyApplicationUser> _signInManager;
-        private readonly IUserStore<EschodyApplicationUser> _userStore;
+        private readonly UserManager<UserModelIdentity> _userManager;
+        private readonly SignInManager<UserModelIdentity> _signInManager;
+        private readonly IUserStore<UserModelIdentity> _userStore;
 
         public ExternalLoginsModel(
-            UserManager<EschodyApplicationUser> userManager,
-            SignInManager<EschodyApplicationUser> signInManager,
-            IUserStore<EschodyApplicationUser> userStore)
+            UserManager<UserModelIdentity> userManager,
+            SignInManager<UserModelIdentity> signInManager,
+            IUserStore<UserModelIdentity> userStore)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -70,7 +65,7 @@ namespace Eschody.Application.Areas.Identity.Pages.Account.Manage
                 .ToList();
 
             string passwordHash = null;
-            if (_userStore is IUserPasswordStore<EschodyApplicationUser> userPasswordStore)
+            if (_userStore is IUserPasswordStore<UserModelIdentity> userPasswordStore)
             {
                 passwordHash = await userPasswordStore.GetPasswordHashAsync(user, HttpContext.RequestAborted);
             }

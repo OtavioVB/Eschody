@@ -1,25 +1,18 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
-
-using System;
-using System.Linq;
+﻿#nullable disable
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Eschody.Application.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Eschody.Infrascructure.Data;
 
 namespace Eschody.Application.Areas.Identity.Pages.Account
 {
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<EschodyApplicationUser> _userManager;
+        private readonly UserManager<UserModelIdentity> _userManager;
 
-        public ConfirmEmailModel(UserManager<EschodyApplicationUser> userManager)
+        public ConfirmEmailModel(UserManager<UserModelIdentity> userManager)
         {
             _userManager = userManager;
         }

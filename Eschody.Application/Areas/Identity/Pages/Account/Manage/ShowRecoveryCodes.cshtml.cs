@@ -2,11 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using Eschody.Application.Areas.Identity.Data;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
 namespace Eschody.Application.Areas.Identity.Pages.Account.Manage
 {

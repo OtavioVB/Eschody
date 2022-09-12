@@ -2,24 +2,22 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using Eschody.Application.Areas.Identity.Data;
+using Eschody.Infrascructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
 
 namespace Eschody.Application.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {
-        private readonly UserManager<EschodyApplicationUser> _userManager;
-        private readonly SignInManager<EschodyApplicationUser> _signInManager;
+        private readonly UserManager<UserModelIdentity> _userManager;
+        private readonly SignInManager<UserModelIdentity> _signInManager;
 
         public SetPasswordModel(
-            UserManager<EschodyApplicationUser> userManager,
-            SignInManager<EschodyApplicationUser> signInManager)
+            UserManager<UserModelIdentity> userManager,
+            SignInManager<UserModelIdentity> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
