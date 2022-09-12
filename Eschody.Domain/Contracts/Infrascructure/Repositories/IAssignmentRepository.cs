@@ -4,7 +4,8 @@ namespace Eschody.Domain.Contracts.Infrascructure.Repositories;
 
 public interface IAssignmentRepository
 {
-    public Task InsertNewAssingment(Assignment assignment);
-    public Task DeleteAssignment(Assignment assignment);
-    public Task<Assignment?> GetAssignment(int id);
+    public Task InsertNewAssingmentAsync(Assignment assignment);
+    public Task DeleteAssignmentAsync(Assignment assignment);
+    public Task<Assignment?> GetAssignmentAsync(int id);
+    public Task UpdateAssignmentAsync(Assignment assignment);
 }

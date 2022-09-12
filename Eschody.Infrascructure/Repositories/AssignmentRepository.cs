@@ -13,19 +13,19 @@ public class AssignmentRepository : IAssignmentRepository
         _dbContext = dbContext;
     }
 
-    public async Task InsertNewAssingment(Assignment assignment)
+    public async Task InsertNewAssingmentAsync(Assignment assignment)
     {
         await _dbContext.AddAsync(assignment);
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task DeleteAssignment(Assignment assignment)
+    public async Task DeleteAssignmentAsync(Assignment assignment)
     {
         _dbContext.Assignments.Remove(assignment);
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<Assignment?> GetAssignment(int id)
+    public async Task<Assignment?> GetAssignmentAsync(int id)
     {
         var assignment = await _dbContext.Assignments.FindAsync(id);
 
@@ -37,5 +37,10 @@ public class AssignmentRepository : IAssignmentRepository
         {
             return null;
         }
+    }
+
+    public async Task UpdateAssignmentAsync(Assignment assignment)
+    {
+        _dbContext.Assignments.Update(assignment);
     }
 }
