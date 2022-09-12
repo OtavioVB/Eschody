@@ -8,4 +8,5 @@ public interface IAssignmentRepository
     public Task DeleteAssignmentAsync(Assignment assignment);
     public Task<Assignment?> GetAssignmentAsync(int id);
     public Task UpdateAssignmentAsync(Assignment assignment);
+    public List<Assignment> GetAssignmentsAsync(int userId);
 }

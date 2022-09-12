@@ -1,6 +1,7 @@
 ﻿using Eschody.Domain.Contracts.Infrascructure.Repositories;
 using Eschody.Domain.Models.DTOs;
 using Eschody.Infrascructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Eschody.Infrascructure.Repositories;
 
@@ -39,8 +40,15 @@ public class AssignmentRepository : IAssignmentRepository
         }
     }
 
+    public List<Assignment> GetAssignmentsAsync(int userId)
+    {
+        var assingment = _dbContext.Assignments.Where(p => p.IdentifierUser == userId).ToList();
+        return assingment;
+    }
+
     public async Task UpdateAssignmentAsync(Assignment assignment)
     {
         _dbContext.Assignments.Update(assignment);
+        await _dbContext.SaveChangesAsync();
     }
 }
