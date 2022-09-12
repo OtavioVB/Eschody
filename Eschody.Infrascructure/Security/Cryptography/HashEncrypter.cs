@@ -8,9 +8,9 @@ public class HashEncrypter : IHashEncrypter
 {
     public HashAlgorithm HashAlgorithm { get; private set; }
 
-    public HashEncrypter(HashAlgorithm hashAlgorithm)
+    public HashEncrypter()
     {
-        HashAlgorithm = hashAlgorithm;
+        HashAlgorithm = SHA256.Create();
     }
 
     public string Encrypt(string Texto)

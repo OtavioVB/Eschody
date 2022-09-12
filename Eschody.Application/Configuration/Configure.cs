@@ -34,7 +34,7 @@ public class Configure
 
     private void AddDependences()
     {
-        
+        _webApplicationBuilder.Services.AddTransient<IHashEncrypter, HashEncrypter>();
     }
 
     public void CreateWebApplication()
