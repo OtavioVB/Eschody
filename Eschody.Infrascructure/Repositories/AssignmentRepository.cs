@@ -19,19 +19,19 @@ public class AssignmentRepository : IAssignmentRepository
     /// </summary>
     /// <param name="assignment">Tarefa do Usuário</param>
     /// <returns>Validar todos os campos</returns>
-    public async Task InsertNewAssingmentAsync(Assignment assignment)
+    public async Task InsertAsync(Assignment assignment)
     {
         await _dataContext.AddAsync(assignment);
         await _dataContext.SaveChangesAsync();
     }
 
-    public async Task DeleteAssignmentAsync(Assignment assignment)
+    public async Task DeleteAsync(Assignment assignment)
     {
         _dataContext.Assignments.Remove(assignment);
         await _dataContext.SaveChangesAsync();
     }
 
-    public async Task<Assignment?> GetAssignmentAsync(int id)
+    public async Task<Assignment?> GetByIdAsync(int id)
     {
         var assignment = await _dataContext.Assignments.FindAsync(id);
 
@@ -51,7 +51,7 @@ public class AssignmentRepository : IAssignmentRepository
         return assignment;
     }
 
-    public async Task UpdateAssignmentAsync(Assignment assignment)
+    public async Task UpdateAsync(Assignment assignment)
     {
         _dataContext.Assignments.Update(assignment);
         await _dataContext.SaveChangesAsync();

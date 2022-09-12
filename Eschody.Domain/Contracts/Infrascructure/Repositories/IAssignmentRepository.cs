@@ -2,11 +2,7 @@
 
 namespace Eschody.Domain.Contracts.Infrascructure.Repositories;
 
-public interface IAssignmentRepository
+public interface IAssignmentRepository : IBaseRepository<Assignment>
 {
-    public Task InsertNewAssingmentAsync(Assignment assignment);
-    public Task DeleteAssignmentAsync(Assignment assignment);
-    public Task<Assignment?> GetAssignmentAsync(int id);
-    public Task UpdateAssignmentAsync(Assignment assignment);
     public Task<List<Assignment>> GetAssignmentsAsync(Guid userId);
 }

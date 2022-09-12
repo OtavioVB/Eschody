@@ -1,4 +1,7 @@
 using Eschody.Application.Configuration;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Eschody.Infrascructure.Data;
 
 namespace Eschody;
 
