@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Eschody.Domain.Contracts.Infrascructure.Repositories;
 using Eschody.Infrascructure.Repositories;
+using Eschody.Infrascructure.Data.Maps;
+using Eschody.Domain.Models.DTOs;
+using Eschody.Domain.Contracts.Infrascructure.Maps;
 
 namespace Eschody.Application.Configuration;
 
@@ -35,6 +38,9 @@ public class Configure
 
     private void AddDependences()
     {
+        _webApplicationBuilder.Services.AddTransient<IBaseMap<Assignment>, AssignmentMap>();
+
+
         _webApplicationBuilder.Services.AddTransient<IHashEncrypter, HashEncrypter>();
         _webApplicationBuilder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
     }
