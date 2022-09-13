@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,41 +7,32 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Balta.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/content_app/styles/header.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/content_app/styles/global.css" asp-append-version="true">
-    <script src="~/content_app/javascript/header/function.js" defer></script>
 </head>
 <body>
     <header>
-        <nav class="navigation">
-            <div class="page-resume">
-                <img src="~/content_app/assets/eschody_favicon_white.png" alt="Logo do @ViewData["SiteName"], Logo">
-                <h1 class="page-resume-title">@ViewData["SiteName"]</h1>
-            </div>
-            <div class="page-navigation">
-                <ul>
-                    <li><a asp-area="Usuario" asp-controller="Estudos" asp-action="Materia" asp-route-id="1">Menu Principal</a></li>
-                    <li><a asp-controller="Home" asp-action="#">Blog</a></li>
-                    <li><a asp-controller="Home" asp-action="#">A plataforma</a></li>
-                </ul>
-            </div>
-            <div class="page-navigation-login-area">
-                <a asp-action="Index" asp-controller="Login" class="login-button-link">ACESSO</a>
-            </div>
-            <div class="mobile-menu-icon">
-                <button class="icon-menu"><img class="mobile-menu-icon-icon" src="~/content_app/assets/menu_white_36dp.svg"></button>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Balta</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Menu Principal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacidade</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Curso" asp-action="Index">Cursos</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
             </div>
         </nav>
-        <div class="mobile-menu">
-            <ul>
-                <li><a asp-controller="Home" asp-action="Index">Menu Principal</a></li>
-                <li><a asp-controller="Home" asp-action="#">Blog</a></li>
-                <li><a asp-controller="Home" asp-action="#">A plataforma</a></li>
-            </ul>
-            <div class="login-button-area-item">
-                <a asp-action="Index" asp-controller="Login" class="login-button-link">ACESSO</a>
-            </div>
-        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
