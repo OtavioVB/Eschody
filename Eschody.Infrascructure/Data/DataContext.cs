@@ -13,21 +13,29 @@ namespace Eschody.Infrascructure.Data;
 public class DataContext : IdentityDbContext<IdentityUser>
 {
     public DbSet<Assignment> Assignments { get; set; }
-
+    public DbSet<Suggestion> Suggestions { get; set; }
+    public DbSet<News> News { get; set; }
 
     // Mapeamentos
     public IBaseMap<Assignment> _assignmentBaseMap { get; private set; }
+    public IBaseMap<Suggestion> _suggestionBaseMap { get; private set; }
+    public IBaseMap<News> _newsBaseMap { get; private set; }
 
-    public DataContext(DbContextOptions<DataContext> options,[FromServices] IBaseMap<Assignment> assignmentBaseMap)
+    public DataContext(DbContextOptions<DataContext> options, 
+        [FromServices] IBaseMap<Assignment> assignmentBaseMap, [FromServices] IBaseMap<Suggestion> suggestionBaseMap, [FromServices] IBaseMap<News> newsBaseMap)
         : base(options)
     {
+        _newsBaseMap = newsBaseMap;
         _assignmentBaseMap = assignmentBaseMap;
+        _suggestionBaseMap = suggestionBaseMap;
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
 
+        _newsBaseMap.CreateMap(builder.Entity<News>());
+        _suggestionBaseMap.CreateMap(builder.Entity<Suggestion>());
         _assignmentBaseMap.CreateMap(builder.Entity<Assignment>());
     }
 }

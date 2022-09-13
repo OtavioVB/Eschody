@@ -1,5 +1,4 @@
-﻿using Eschody.Infrascructure.Data;
-using Eschody.Domain.Contracts.Infrascructure.Security.Cryptography;
+﻿using Eschody.Domain.Contracts.Infrascructure.Security.Cryptography;
 using Eschody.Infrascructure.Security.Cryptography;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +7,7 @@ using Eschody.Infrascructure.Repositories;
 using Eschody.Infrascructure.Data.Maps;
 using Eschody.Domain.Models.DTOs;
 using Eschody.Domain.Contracts.Infrascructure.Maps;
+using Eschody.Infrascructure.Data;
 
 namespace Eschody.Application.Configuration;
 

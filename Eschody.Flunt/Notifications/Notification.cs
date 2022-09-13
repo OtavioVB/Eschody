@@ -1,19 +1,13 @@
-﻿namespace Flunt.Notifications
+﻿namespace Flunt.Notifications;
+
+public sealed class Notification
 {
-    public class Notification
+    public Notification(string key, string message)
     {
-        public Notification()
-        {
-
-        }
-
-        public Notification(string key, string message)
-        {
-            Key = key;
-            Message = message;
-        }
-
-        public string Key { get; set; }
-        public string Message { get; set; }
+        Key = key;
+        Message = message;
     }
+
+    public string Key { get; }
+    public string Message { get; }
 }

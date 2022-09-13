@@ -5,16 +5,16 @@ public partial class Contract
     #region IsMinValue
 
     /// <summary>
-    /// Requires a long has its min value
+    /// Requires a short has its min value
     /// </summary>
     /// <param name="val"></param>
     /// <param name="key"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public Contract IsMinValue(long val, string key = "",string message = "{0} should be {1}")
+    public Contract IsMinValue(short val, string key = "",string message = "{0} should be {1}")
     {
-        if (val != long.MinValue)
-            AddNotification(key, string.Format(message, key, long.MinValue));
+        if (val != short.MinValue)
+            AddNotification(key, string.Format(message, key, short.MinValue));
 
         return this;
     }
@@ -24,16 +24,16 @@ public partial class Contract
     #region IsNotMinValue
 
     /// <summary>
-    /// Requires a long has not its min value
+    /// Requires a short has not its min value
     /// </summary>
     /// <param name="val"></param>
     /// <param name="key"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public Contract IsNotMinValue(long val, string key = "",string message = "{0} should not be {1}")
+    public Contract IsNotMinValue(short val, string key = "",string message = "{0} should not be {1}")
     {
-        if (val == long.MinValue)
-            AddNotification(key, string.Format(message, key, long.MinValue));
+        if (val == short.MinValue)
+            AddNotification(key, string.Format(message, key, short.MinValue));
 
         return this;
     }
@@ -43,16 +43,16 @@ public partial class Contract
     #region IsMaxValue
 
     /// <summary>
-    /// Requires a long has its max value
+    /// Requires a short has its max value
     /// </summary>
     /// <param name="val"></param>
     /// <param name="key"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public Contract IsMaxValue(long val, string key = "",string message = "{0} should be {1}")
+    public Contract IsMaxValue(short val, string key = "",string message = "{0} should be {1}")
     {
-        if (val != long.MaxValue)
-            AddNotification(key, string.Format(message, key, long.MaxValue));
+        if (val != short.MaxValue)
+            AddNotification(key, string.Format(message, key, short.MaxValue));
 
         return this;
     }
@@ -62,16 +62,16 @@ public partial class Contract
     #region IsNotMaxValue
 
     /// <summary>
-    /// Requires a long has not its min value
+    /// Requires a short has not its min value
     /// </summary>
     /// <param name="val"></param>
     /// <param name="key"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public Contract IsNotMaxValue(long val, string key = "",string message = "{0} should not be {1}")
+    public Contract IsNotMaxValue(short val, string key = "",string message = "{0} should not be {1}")
     {
-        if (val == long.MaxValue)
-            AddNotification(key, string.Format(message, key, long.MinValue));
+        if (val == short.MaxValue)
+            AddNotification(key, string.Format(message, key, short.MinValue));
 
         return this;
     }
@@ -81,7 +81,7 @@ public partial class Contract
     #region IsBetween
 
     /// <summary>
-    /// Requires a long is between
+    /// Requires a short is between
     /// </summary>
     /// <param name="val"></param>
     /// <param name="start"></param>
@@ -89,7 +89,7 @@ public partial class Contract
     /// <param name="key"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public Contract IsBetween(long val, long start, long end, string key,
+    public Contract IsBetween(short val, short start, short end, string key,
         string message = "{0} should be between {1} and {2}")
     {
         if ((val >= start && val <= end) == false)
@@ -103,7 +103,7 @@ public partial class Contract
     #region IsNotBetween
 
     /// <summary>
-    /// Requires a long is not between
+    /// Requires a short is not between
     /// </summary>
     /// <param name="val"></param>
     /// <param name="start"></param>
@@ -111,7 +111,7 @@ public partial class Contract
     /// <param name="key"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public Contract IsNotBetween(long val, long start, long end, string key,
+    public Contract IsNotBetween(short val, short start, short end, string key,
         string message = "{0} should not be between {1} and {2}")
     {
         if ((val >= start && val <= end) == true)
@@ -125,14 +125,14 @@ public partial class Contract
     #region Contains
 
     /// <summary>
-    /// Requires a list contains a long
+    /// Requires a list contains a short
     /// </summary>
     /// <param name="val"></param>
     /// <param name="list"></param>
     /// <param name="key"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public Contract Contains(long val, IEnumerable<long> list, string key,
+    public Contract Contains(short val, IEnumerable<short> list, string key,
         string message = "{0} should contains the value {1}")
     {
         if (list.Any(x => x == val) == false)
@@ -146,14 +146,14 @@ public partial class Contract
     #region NotContains
 
     /// <summary>
-    /// Requires a list does not contains a long
+    /// Requires a list does not contains a short
     /// </summary>
     /// <param name="val"></param>
     /// <param name="list"></param>
     /// <param name="key"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public Contract NotContains(long val, IEnumerable<long> list, string key,
+    public Contract NotContains(short val, IEnumerable<short> list, string key,
         string message = "{0} should not contains the value {1}")
     {
         if (list.Any(x => x == val) == true)
