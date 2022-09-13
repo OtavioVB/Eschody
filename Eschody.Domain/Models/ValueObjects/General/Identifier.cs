@@ -1,9 +1,9 @@
 ﻿using Eschody.Domain.Contracts.Models.ValueObjects;
 using Flunt.Notifications;
 
-namespace Eschody.Domain.Models.ValueObjects;
+namespace Eschody.Domain.Models.ValueObjects.General;
 
-public class Identifier : Notifiable, IIdentifier
+public class Identifier : IIdentifier
 {
     public int Value { get; private set; }
 
