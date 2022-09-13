@@ -20,6 +20,7 @@
   <ItemGroup>
     <Folder Include="Areas\Usuario\Data\" />
     <Folder Include="Areas\Usuario\Models\" />
+    <Folder Include="wwwroot\content_app\assets\" />
   </ItemGroup>
 
   <ItemGroup>
