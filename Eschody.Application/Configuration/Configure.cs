@@ -8,6 +8,7 @@ using Eschody.Infrascructure.Data.Maps;
 using Eschody.Domain.Models.DTOs;
 using Eschody.Domain.Contracts.Infrascructure.Maps;
 using Eschody.Infrascructure.Data;
+using System.Runtime.CompilerServices;
 
 namespace Eschody.Application.Configuration;
 
@@ -43,6 +44,10 @@ public class Configure
 
         _webApplicationBuilder.Services.AddTransient<IHashEncrypter, HashEncrypter>();
         _webApplicationBuilder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
+
+        _webApplicationBuilder.Services.AddTransient<IBaseMap<Assignment>, AssignmentMap>();
+        _webApplicationBuilder.Services.AddTransient<IBaseMap<Suggestion>, SuggestionMap>();
+        _webApplicationBuilder.Services.AddTransient<IBaseMap<News>, NewsMap>();
     }
 
     public void CreateWebApplication()
