@@ -13,19 +13,26 @@ public class DataContext : DbContext
     public DbSet<Assignment> Assignments { get; set; }
     public DbSet<Suggestion> Suggestions { get; set; }
     public DbSet<News> News { get; set; }
+    public DbSet<User> Users { get; set; }
 
     // Mapeamentos
     public IBaseMap<Assignment> _assignmentBaseMap { get; private set; }
     public IBaseMap<Suggestion> _suggestionBaseMap { get; private set; }
     public IBaseMap<News> _newsBaseMap { get; private set; }
+    public IBaseMap<User> _userBaseMap { get; private set; }
 
     public DataContext(DbContextOptions<DataContext> options, 
-        [FromServices] IBaseMap<Assignment> assignmentBaseMap, [FromServices] IBaseMap<Suggestion> suggestionBaseMap, [FromServices] IBaseMap<News> newsBaseMap)
-        : base(options)
+
+        [FromServices] IBaseMap<Assignment> assignmentBaseMap, 
+        [FromServices] IBaseMap<Suggestion> suggestionBaseMap, 
+        [FromServices] IBaseMap<News> newsBaseMap, 
+        [FromServices] IBaseMap<User> userBaseMap
+        ) : base(options)
     {
         _newsBaseMap = newsBaseMap;
         _assignmentBaseMap = assignmentBaseMap;
         _suggestionBaseMap = suggestionBaseMap;
+        _userBaseMap = userBaseMap;
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -35,6 +42,7 @@ public class DataContext : DbContext
         _newsBaseMap.CreateMap(builder.Entity<News>());
         _suggestionBaseMap.CreateMap(builder.Entity<Suggestion>());
         _assignmentBaseMap.CreateMap(builder.Entity<Assignment>());
+        _userBaseMap.CreateMap(builder.Entity<User>());
     }
 }
 
