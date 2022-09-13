@@ -3,7 +3,7 @@ using Flunt.Notifications;
 
 namespace Eschody.Domain.Models.ValueObjects;
 
-public class Identifier : Notifiable<Notification>, IIdentifier
+public class Identifier : Notifiable, IIdentifier
 {
     public int Value { get; private set; }
 
