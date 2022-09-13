@@ -1,10 +1,10 @@
 ﻿using Eschody.Domain.Contracts.Infrascructure.Repositories;
+using Eschody.Domain.Models.DTOs;
 using Eschody.Infrascructure.Data;
-using Microsoft.AspNetCore.Identity;
 
 namespace Eschody.Infrascructure.Repositories;
 
-public class UserRepository : IBaseRepository<IdentityUser>
+public class UserRepository : IBaseRepository<User>
 {
     private readonly DataContext _dataContext;
 
@@ -13,23 +13,24 @@ public class UserRepository : IBaseRepository<IdentityUser>
         _dataContext = dataContext;
     }
 
-    public Task DeleteAsync(IdentityUser entity)
+    public Task DeleteAsync(User entity)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<IdentityUser?> GetByIdAsync(int id)
+    public async Task<User?> GetByIdAsync(int id)
     {
         var user = await _dataContext.Users.FindAsync(id);
         return user;
     }
 
-    public Task InsertAsync(IdentityUser entity)
+    public async Task InsertAsync(User entity)
     {
-        throw new NotImplementedException();
+        await _dataContext.AddAsync(entity);
+        await _dataContext.SaveChangesAsync();
     }
 
-    public Task UpdateAsync(IdentityUser entity)
+    public Task UpdateAsync(User entity)
     {
         throw new NotImplementedException();
     }
