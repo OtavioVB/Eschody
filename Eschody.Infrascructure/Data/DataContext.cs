@@ -3,14 +3,12 @@
 
 using Eschody.Domain.Contracts.Infrascructure.Maps;
 using Eschody.Domain.Models.DTOs;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Eschody.Infrascructure.Data;
 
-public class DataContext : IdentityDbContext<IdentityUser>
+public class DataContext : DbContext
 {
     public DbSet<Assignment> Assignments { get; set; }
     public DbSet<Suggestion> Suggestions { get; set; }
