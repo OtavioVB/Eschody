@@ -1,6 +1,8 @@
-﻿namespace Eschody.Domain.Models.ValueObjects.UserObject;
+﻿using Eschody.Domain.Models.ValueObjects.General;
 
-public class PasswordEncrypted
+namespace Eschody.Domain.Models.ValueObjects.UserObject;
+
+public class PasswordEncrypted : ValueObject
 {
     public string Value { get; private set; }
 
