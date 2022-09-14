@@ -1,4 +1,4 @@
-﻿namespace Eschody.Domain.Models.ValueObjects;
+﻿namespace Eschody.Domain.Models.ValueObjects.NewsObject;
 
 public class Version
 {

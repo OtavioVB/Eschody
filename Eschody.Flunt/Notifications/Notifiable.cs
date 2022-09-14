@@ -1,6 +1,8 @@
-﻿namespace Flunt.Notifications;
+﻿using Eschody.Flunt.Notifications;
 
-public abstract class Notifiable
+namespace Flunt.Notifications;
+
+public abstract class Notifiable : INotifiable
 {
     #region Private Variables
 
@@ -46,7 +48,7 @@ public abstract class Notifiable
     /// This is a syntax sugar for AddNotifications(Notifiable item)
     /// </summary>
     /// <param name="item">Notifible</param>
-    protected void Assert(Notifiable item)
+    public void Assert(Notifiable item)
         => AddNotifications(item.Notifications);
 
     /// <summary>
