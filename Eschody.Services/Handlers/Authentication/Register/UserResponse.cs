@@ -1,7 +1,7 @@
 ﻿using Eschody.Domain.Contracts.Services;
 using Flunt.Notifications;
 
-namespace Eschody.Services.Handlers.Authentication;
+namespace Eschody.Services.Handlers.Authentication.Register;
 
 public class UserResponse : Notifiable, IResponse
 {

@@ -1,7 +1,7 @@
 ﻿using Eschody.Domain.Contracts.Infrascructure.Repositories;
 using Eschody.Domain.Contracts.Services;
 
-namespace Eschody.Services.Handlers.Authentication;
+namespace Eschody.Services.Handlers.Authentication.Register;
 
 public class UserHandler : IHandler<UserRequest, UserResponse>
 {
