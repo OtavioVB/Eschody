@@ -3,7 +3,7 @@ using Eschody.Domain.Contracts.Services;
 
 namespace Eschody.Services.Handlers.Authentication;
 
-public class UserHandler : IHandler<HttpRequestException, HttpResponseMessage>
+public class UserHandler : IHandler<UserRequest, UserResponse>
 {
     private readonly IUserRepository _userRepository;
 
