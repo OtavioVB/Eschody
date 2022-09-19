@@ -12,7 +12,7 @@ public class UserHandler : IHandler<UserRequest, UserResponse>
         _userRepository = userRepository;
     }
 
-    public HttpResponseMessage Handle(HttpRequestException request)
+    public UserResponse Handle(UserRequest request)
     {
         throw new NotImplementedException();
     }
