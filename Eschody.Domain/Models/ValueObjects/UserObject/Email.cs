@@ -1,5 +1,4 @@
 ﻿using Eschody.Domain.Models.ValueObjects.General;
-using Eschody.Domain.Models.ValueObjects.UserObject.Assertions;
 using Eschody.Flunt.Notifications;
 
 namespace Eschody.Domain.Models.ValueObjects.UserObject;
@@ -12,7 +11,7 @@ public class Email : ValueObject
     {
         Value = value;
 
-        Assert(EmailAssertion.CreateEmailAssertionContract(Value));
+        Assert(Assertions.EmailAssertion.CreateContract(Value));
     }
 
     public override string ToString()

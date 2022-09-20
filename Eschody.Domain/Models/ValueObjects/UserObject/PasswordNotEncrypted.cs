@@ -1,5 +1,4 @@
 ﻿using Eschody.Domain.Models.ValueObjects.General;
-using Eschody.Domain.Models.ValueObjects.UserObject.Assertions;
 
 namespace Eschody.Domain.Models.ValueObjects.UserObject;
 
@@ -11,7 +10,7 @@ public class PasswordNotEncrypted : ValueObject
     {
         Value = value;
 
-        Assert(PasswordNotEncryptedAssertion.CreateAssert(Value));
+        Assert(Assertions.PasswordNotEncryptedAssertion.CreateContract(Value));
     }
 
     public override string ToString()

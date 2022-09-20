@@ -1,5 +1,4 @@
 ﻿using Eschody.Domain.Models.ValueObjects.General;
-using Eschody.Domain.Models.ValueObjects.UserObject.Assertions;
 
 namespace Eschody.Domain.Models.ValueObjects.UserObject;
 
@@ -11,7 +10,7 @@ public class Username : ValueObject
     {
         Value = value;
 
-        UsernameAssertion.CreateAssert(Value);
+        Assertions.UsernameAssertion.CreateContract(Value);
     }
 
     public override string ToString()
