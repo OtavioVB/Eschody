@@ -50,6 +50,13 @@ public class UserHandlerRegister : Notifiable, IHandler<UserRequest, UserRespons
             return response;
         }
 
+        var pwdEncrypted = new PasswordEncrypted(_hashEncrypter.Encrypt(request.PasswordNotEncrypted.ToString()));
+        if (pwdEncrypted.IsValid == false)
+        {
+            AddNotification("Erro interno", "Não foi possível criptografar sua senha corretamente, erro interno do servidor!");
+            var response = new UserResponse(500, "Erro interno", Notifications);
+            return response;
+        }
 
 
         var user = new User()
@@ -57,7 +64,7 @@ public class UserHandlerRegister : Notifiable, IHandler<UserRequest, UserRespons
             Created = DateTime.Now,
             Email = request.Email.ToString(),
             Identifier = Guid.NewGuid(),
-            Password = new PasswordEncrypted(_hashEncrypter.Encrypt(request.PasswordNotEncrypted.ToString())).ToString(),
+            Password = pwdEncrypted.ToString(),
             Username = request.Username.ToString(),
             Fullname = request.Fullname.ToString()
         };
