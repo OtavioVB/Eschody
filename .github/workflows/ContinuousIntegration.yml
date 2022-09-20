@@ -12,6 +12,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '6.0.302'
+    - name: Build Project
+      environment: Compilação
+      run: dotnet build Eschody.Application.csproj
 
   tests:
     name: Domain Tests
@@ -20,6 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run Domain Tests
+        environment: Testes;
         run: dotnet test Eschody.Domain.Tests
       - name: Run Services Tests
-      run: dotnet test Eschody.Services.Tests
+        environment: Testes;
+        run: dotnet test Eschody.Services.Tests
