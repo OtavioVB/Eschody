@@ -8,12 +8,12 @@ using Flunt.Notifications;
 
 namespace Eschody.Services.Handlers.Authentication.Register;
 
-public class UserHandler : Notifiable, IHandler<UserRequest, UserResponse>
+public class UserHandlerRegister : Notifiable, IHandler<UserRequest, UserResponse>
 {
     private readonly IUserRepository _userRepository;
     private readonly IHashEncrypter _hashEncrypter;
 
-    public UserHandler(IUserRepository userRepository, IHashEncrypter hashEncrypter)
+    public UserHandlerRegister(IUserRepository userRepository, IHashEncrypter hashEncrypter)
     {
         _hashEncrypter = hashEncrypter;
         _userRepository = userRepository;
@@ -29,7 +29,7 @@ public class UserHandler : Notifiable, IHandler<UserRequest, UserResponse>
             return response;
         }
 
-        if(request.PasswordNotEncrypted.ToString() == request.PasswordNotEncryptedConfirm.ToString())
+        if(request.PasswordNotEncrypted.ToString() != request.PasswordNotEncryptedConfirm.ToString())
         {
             AddNotification("Confirmação de senha", "É necessário que as senhas inseridas sejam iguais.");
             var response = new UserResponse(400, "Os dados inseridos não coincidem com o esperado", Notifications);
@@ -49,7 +49,6 @@ public class UserHandler : Notifiable, IHandler<UserRequest, UserResponse>
             var response = new UserResponse(400, "Dados já utilizados", Notifications);
             return response;
         }
-
 
         var user = new User()
         {

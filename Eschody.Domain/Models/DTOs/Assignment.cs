@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
+﻿
 namespace Eschody.Domain.Models.DTOs;
 
 public sealed class Assignment

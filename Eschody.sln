@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eschody.Flunt", "Eschody.Fl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eschody.Services", "Eschody.Services\Eschody.Services.csproj", "{12441E17-12FF-49D5-B788-71163891C0E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eschody.Services.Tests", "Eschody.Services.Tests\Eschody.Services.Tests.csproj", "{61535772-2A24-4540-A19C-27829340A53A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,12 +49,17 @@ Global
 		{12441E17-12FF-49D5-B788-71163891C0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12441E17-12FF-49D5-B788-71163891C0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12441E17-12FF-49D5-B788-71163891C0E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61535772-2A24-4540-A19C-27829340A53A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61535772-2A24-4540-A19C-27829340A53A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61535772-2A24-4540-A19C-27829340A53A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61535772-2A24-4540-A19C-27829340A53A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7BD6860B-5CE0-45EA-ACDB-8C2B0DD95E13} = {871FF56A-81E1-4432-8097-35D5F572F3E7}
+		{61535772-2A24-4540-A19C-27829340A53A} = {871FF56A-81E1-4432-8097-35D5F572F3E7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F48A96B-01D9-4099-A485-EB2ADA1EE6F6}

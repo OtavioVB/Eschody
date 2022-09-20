@@ -10,8 +10,8 @@ public static class Assertions
         {
             return new Contract()
             .IsNotNullOrWhiteSpace(username, "Nome de usuário", "O nome de usuário não pode conter espaços vazios.")
-            .IsLowerOrEqualsThan(username.Length, 3, "Nome de Usuário", "O nome de usuário não pode ter menos que 4 caracteres.")
-            .IsGreaterOrEqualsThan(username.Length, 20, "Nome de Usuário", "O nome de usuário não pode conter mais que 20 caracteres.");
+            .IsLowerOrEqualsThan(3, username.Length, "Nome de Usuário", "O nome de usuário não pode ter menos que 4 caracteres.")
+            .IsGreaterOrEqualsThan(20, username.Length, "Nome de Usuário", "O nome de usuário não pode conter mais que 20 caracteres.");
         }
     }
 
@@ -21,8 +21,8 @@ public static class Assertions
         {
             return new Contract()
                 .IsNotNullOrEmpty(fullname, "Nome", "Seu nome não pode ser nulo ou vazio")
-                .IsLowerOrEqualsThan(fullname.Length, 3, "Nome", "Seu nome não pode conter menos que 3 caracteres")
-                .IsGreaterOrEqualsThan(fullname.Length, 30, "Nome ", "O nome de usuário não pode conter mais que 30 caracteres."); ;
+                .IsLowerOrEqualsThan(3, fullname.Length, "Nome", "Seu nome não pode conter menos que 3 caracteres")
+                .IsGreaterOrEqualsThan(30, fullname.Length, "Nome ", "O nome de usuário não pode conter mais que 30 caracteres."); ;
         }
     }
 
@@ -39,8 +39,8 @@ public static class Assertions
         public static Contract CreateContract(string pwd)
         {
             return new Contract()
-                .IsLowerOrEqualsThan(pwd.Length, 6, "Senha", "A senha deve conter pelo menos 6 caracteres.")
-                .IsGreaterOrEqualsThan(pwd.Length, 36, "Senha", "A senha deve conter até 36 caracteres.")
+                .IsLowerOrEqualsThan(6,pwd.Length, "Senha", "A senha deve conter pelo menos 6 caracteres.")
+                .IsGreaterOrEqualsThan(36, pwd.Length, "Senha", "A senha deve conter até 36 caracteres.")
                 .IsNotNullOrEmpty(pwd, "Senha", "A senha não pode ser nula ou vazia.");
         }
 
