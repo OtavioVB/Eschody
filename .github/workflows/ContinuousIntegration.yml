@@ -19,5 +19,7 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v1
-      - name: Run Tests
+      - name: Run Domain Tests
         run: dotnet test Eschody.Domain.Tests
+      - name: Run Services Tests
+      run: dotnet test Eschody.Services.Tests
