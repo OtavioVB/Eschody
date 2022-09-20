@@ -6,6 +6,7 @@ jobs:
   build:
     name: Debbuging Project
     runs-on: ubuntu-latest
+    environment: Compilação
     steps: 
     - uses: actions/checkout@v1
     - name: Setup .NET Core
@@ -13,18 +14,16 @@ jobs:
       with:
         dotnet-version: '6.0.302'
     - name: Build Project
-      environment: Compilação
       run: dotnet build Eschody.Application.csproj
 
   tests:
     name: Domain Tests
     runs-on: ubuntu-latest
     needs: build
+    environment: Testes
     steps:
       - uses: actions/checkout@v1
       - name: Run Domain Tests
-        environment: Testes;
         run: dotnet test Eschody.Domain.Tests
       - name: Run Services Tests
-        environment: Testes;
         run: dotnet test Eschody.Services.Tests
