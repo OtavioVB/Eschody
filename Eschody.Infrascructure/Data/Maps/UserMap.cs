@@ -7,7 +7,6 @@ public class UserMap : IBaseMap<User>
 {
     public void CreateMap(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<User> builder)
     {
-        builder.HasKey(p => p.DataIdentifier);
-        builder.Property(p => p.DataIdentifier).ValueGeneratedOnAdd();
+        builder.HasKey(p => p.Identifier);
     }
 }

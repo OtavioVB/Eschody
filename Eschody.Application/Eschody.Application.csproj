@@ -8,9 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Usuario\Data\**" />
+    <Compile Remove="Areas\Usuario\Models\**" />
     <Compile Remove="wwwroot\content_app\**" />
+    <Content Remove="Areas\Usuario\Data\**" />
+    <Content Remove="Areas\Usuario\Models\**" />
     <Content Remove="wwwroot\content_app\**" />
+    <EmbeddedResource Remove="Areas\Usuario\Data\**" />
+    <EmbeddedResource Remove="Areas\Usuario\Models\**" />
     <EmbeddedResource Remove="wwwroot\content_app\**" />
+    <None Remove="Areas\Usuario\Data\**" />
+    <None Remove="Areas\Usuario\Models\**" />
     <None Remove="wwwroot\content_app\**" />
   </ItemGroup>
 
@@ -20,11 +28,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.8" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Usuario\Data\" />
-    <Folder Include="Areas\Usuario\Models\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,7 +5,7 @@ namespace Eschody.Domain.Models.ValueObjects.UserObject;
 
 public class PasswordEncrypted : ValueObject
 {
-    public string Value { get; private set; }
+    private string Value { get; set; }
 
     public PasswordEncrypted(string value)
     {

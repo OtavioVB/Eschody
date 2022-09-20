@@ -2,5 +2,5 @@
 
 public interface IHandler<Request, Response> where Request : IRequest where Response : IResponse
 {
-    public Response Handle(Request request);
+    public Task<Response> Handle(Request request);
 }

@@ -29,9 +29,6 @@ public class Configure
             options.UseSqlite(connectionString));
         _webApplicationBuilder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-        _webApplicationBuilder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            .AddEntityFrameworkStores<DataContext>();
-
         AddDependences();
 
         _webApplicationBuilder.Services.AddRazorPages();

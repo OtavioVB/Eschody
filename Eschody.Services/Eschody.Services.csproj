@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Eschody.Domain\Eschody.Domain.csproj" />
+    <ProjectReference Include="..\Eschody.Infrascructure\Eschody.Infrascructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Handlers\Authentication\Login\" />
+  </ItemGroup>
+
 </Project>

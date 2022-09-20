@@ -7,11 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Application\" />
-    <Folder Include="Handlers\" />
-    <Folder Include="Models\Entities\" />
-    <Folder Include="Models\ValueObjects\General\Assertions\" />
-    <Folder Include="Models\ValueObjects\NewsObject\Assertions\" />
+    <Compile Remove="Contracts\Application\**" />
+    <Compile Remove="Handlers\**" />
+    <Compile Remove="Models\Entities\**" />
+    <Compile Remove="Models\ValueObjects\General\Assertions\**" />
+    <Compile Remove="Models\ValueObjects\NewsObject\Assertions\**" />
+    <EmbeddedResource Remove="Contracts\Application\**" />
+    <EmbeddedResource Remove="Handlers\**" />
+    <EmbeddedResource Remove="Models\Entities\**" />
+    <EmbeddedResource Remove="Models\ValueObjects\General\Assertions\**" />
+    <EmbeddedResource Remove="Models\ValueObjects\NewsObject\Assertions\**" />
+    <None Remove="Contracts\Application\**" />
+    <None Remove="Handlers\**" />
+    <None Remove="Models\Entities\**" />
+    <None Remove="Models\ValueObjects\General\Assertions\**" />
+    <None Remove="Models\ValueObjects\NewsObject\Assertions\**" />
   </ItemGroup>
 
   <ItemGroup>

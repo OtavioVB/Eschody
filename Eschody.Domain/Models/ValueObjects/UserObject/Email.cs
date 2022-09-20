@@ -6,7 +6,7 @@ namespace Eschody.Domain.Models.ValueObjects.UserObject;
 
 public class Email : ValueObject
 {
-    public string Value { get; private set; }
+    private string Value { get; set; }
 
     public Email(string value)
     {
