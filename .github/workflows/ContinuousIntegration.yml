@@ -28,10 +28,10 @@ jobs:
 
   servicestests:
     name: Services Tests
-      runs-on: ubuntu-latest
-      needs: build
-      environment: Testes
-      steps:
-        - uses: actions/checkout@v1
-        - name: Run Services Tests
-          run: dotnet test Eschody.Services.Tests
+    runs-on: ubuntu-latest
+    needs: build
+    environment: Testes
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Services Tests
+        run: dotnet test Eschody.Services.Tests
