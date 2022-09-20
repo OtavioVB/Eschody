@@ -50,6 +50,8 @@ public class UserHandlerRegister : Notifiable, IHandler<UserRequest, UserRespons
             return response;
         }
 
+
+
         var user = new User()
         {
             Created = DateTime.Now,
