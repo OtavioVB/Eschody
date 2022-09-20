@@ -16,6 +16,17 @@ public class UserRepository : IUserRepository
     }
 
     /// <summary>
+    /// Método para adiconar modelo de usuário no banco de dados
+    /// </summary>
+    /// <param name="user">Entidade</param>
+    /// <returns>Garantir que a classe passou por validações com entidade de validação</returns>
+    public async Task InsertNewUserInDatabase(User user)
+    {
+        await _dataContext.AddAsync(user);
+        await _dataContext.SaveChangesAsync();
+    }
+
+    /// <summary>
     /// Método para obter modelo de usuário pelo seu identificador
     /// </summary>
     /// <param name="identifier">Identificador GUID do Usuário</param>

@@ -5,6 +5,7 @@ namespace Eschody.Domain.Contracts.Infrascructure.Repositories;
 
 public interface IUserRepository
 {
+    public Task InsertNewUserInDatabase(User user);
     public Task<User?> GetByIdAsync(Guid identifier);
     public Task<bool> VerifyUserExistsAsync(Email email);
     public Task<bool> VerifyUserExistsAsync(Username username);

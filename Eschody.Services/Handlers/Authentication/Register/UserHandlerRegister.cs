@@ -1,6 +1,7 @@
 ﻿using Eschody.Domain.Contracts.Infrascructure.Repositories;
 using Eschody.Domain.Contracts.Infrascructure.Security.Cryptography;
 using Eschody.Domain.Contracts.Services;
+using Eschody.Domain.Models.DTOs;
 using Flunt.Notifications;
 
 namespace Eschody.Services.Handlers.Authentication.Register;
@@ -46,6 +47,17 @@ public class UserHandler : Notifiable, IHandler<UserRequest, UserResponse>
             var response = new UserResponse(400, "Dados já utilizados", Notifications);
             return response;
         }
+
+        await _userRepository.InsertNewUserInDatabase(
+            new User()
+            {
+                Created = DateTime.Now,
+                Email = request.Email.ToString(),
+                Identifier = Guid.NewGuid(),
+                Password = _hashEncrypter.Encrypt(request.PasswordNotEncrypted.ToString()),
+                Username = request.Username.ToString()
+            }
+            );
 
         return new UserResponse(400, "Os dados inseridos não coincidem com o esperado", Notifications);
     }
