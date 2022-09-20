@@ -14,7 +14,7 @@ jobs:
       with:
         dotnet-version: '6.0.302'
     - name: Build Project
-      run: dotnet build Eschody.Application.csproj
+      run: dotnet build Eschody.Application/Eschody.Application.csproj
 
   tests:
     name: Domain Tests
