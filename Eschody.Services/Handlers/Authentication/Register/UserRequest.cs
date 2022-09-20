@@ -12,8 +12,9 @@ public class UserRequest : Notifiable, IRequest
     public Username Username { get; private set; }
     public PasswordNotEncrypted PasswordNotEncrypted { get; private set; }
     public PasswordNotEncrypted PasswordNotEncryptedConfirm { get; private set; }
+    public Fullname Fullname { get; private set; }
 
-    public UserRequest(Guid requestIdentifier, DateTime moment, Email email, Username username, PasswordNotEncrypted passwordNotEncrypted, PasswordNotEncrypted passwordNotEncryptedConfirm)
+    public UserRequest(Guid requestIdentifier, DateTime moment, Email email, Username username, PasswordNotEncrypted passwordNotEncrypted, PasswordNotEncrypted passwordNotEncryptedConfirm, Fullname fullname)
     {
         RequestIdentifier = requestIdentifier;
         Moment = moment;
@@ -21,7 +22,8 @@ public class UserRequest : Notifiable, IRequest
         Username = username;
         PasswordNotEncrypted = passwordNotEncrypted;
         PasswordNotEncryptedConfirm = passwordNotEncryptedConfirm;
+        Fullname = fullname;
 
-        AppendNotifications(Username, PasswordNotEncrypted, PasswordNotEncryptedConfirm, Email);
+        AppendNotifications(Username, PasswordNotEncrypted, PasswordNotEncryptedConfirm, Email, Fullname);
     }
 }

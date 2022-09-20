@@ -2,6 +2,8 @@
 using Eschody.Domain.Contracts.Infrascructure.Security.Cryptography;
 using Eschody.Domain.Contracts.Services;
 using Eschody.Domain.Models.DTOs;
+using Eschody.Domain.Models.ValueObjects.General;
+using Eschody.Domain.Models.ValueObjects.UserObject;
 using Flunt.Notifications;
 
 namespace Eschody.Services.Handlers.Authentication.Register;
@@ -48,17 +50,18 @@ public class UserHandler : Notifiable, IHandler<UserRequest, UserResponse>
             return response;
         }
 
-        await _userRepository.InsertNewUserInDatabase(
-            new User()
-            {
-                Created = DateTime.Now,
-                Email = request.Email.ToString(),
-                Identifier = Guid.NewGuid(),
-                Password = _hashEncrypter.Encrypt(request.PasswordNotEncrypted.ToString()),
-                Username = request.Username.ToString()
-            }
-            );
 
-        return new UserResponse(400, "Os dados inseridos não coincidem com o esperado", Notifications);
+        var user = new User()
+        {
+            Created = DateTime.Now,
+            Email = request.Email.ToString(),
+            Identifier = Guid.NewGuid(),
+            Password = new PasswordEncrypted(_hashEncrypter.Encrypt(request.PasswordNotEncrypted.ToString())).ToString(),
+            Username = request.Username.ToString(),
+            Fullname = request.Fullname.ToString()
+        };
+        await _userRepository.InsertNewUserInDatabase(user);
+
+        return new UserResponse(200, "O usuário foi cadastrado com sucesso!", Notifications);
     }
 }

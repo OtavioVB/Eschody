@@ -11,7 +11,18 @@ public static class Assertions
             return new Contract()
             .IsNotNullOrWhiteSpace(username, "Nome de usuário", "O nome de usuário não pode conter espaços vazios.")
             .IsLowerOrEqualsThan(username.Length, 3, "Nome de Usuário", "O nome de usuário não pode ter menos que 4 caracteres.")
-            .IsGreaterOrEqualsThan(username.Length, 20, "Nome de Usuário", "O nome de usuário não pode conter mais que 28 caracteres.");
+            .IsGreaterOrEqualsThan(username.Length, 20, "Nome de Usuário", "O nome de usuário não pode conter mais que 20 caracteres.");
+        }
+    }
+
+    public static class FullnameAssertion
+    {
+        public static Contract CreateContract(string fullname)
+        {
+            return new Contract()
+                .IsNotNullOrEmpty(fullname, "Nome", "Seu nome não pode ser nulo ou vazio")
+                .IsLowerOrEqualsThan(fullname.Length, 3, "Nome", "Seu nome não pode conter menos que 3 caracteres")
+                .IsGreaterOrEqualsThan(fullname.Length, 30, "Nome ", "O nome de usuário não pode conter mais que 30 caracteres."); ;
         }
     }
 
