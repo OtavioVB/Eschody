@@ -1,5 +1,7 @@
 ﻿using Eschody.Domain.Conctracts.Infrascructure.Repository;
 using Eschody.Infrascructure.Repositories.Authentication;
+using Eschody.Services.Handlers.Authentication;
+using Eschody.Services.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -14,6 +16,7 @@ public static class Configure
     {
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddMemoryCache();
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo() 
@@ -36,7 +39,11 @@ public static class Configure
 
     public static void SetUpDependencies(WebApplicationBuilder builder)
     {
+        builder.Services.AddTransient<HandlerCreateStudentAccount>();
+
         builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+        builder.Services.AddSingleton<EncrypterHash>();
     }
 
     public static void SetUpJwtBearer(WebApplicationBuilder builder)
@@ -72,9 +79,9 @@ public static class Configure
 
         builder.Services.AddAuthorization(options =>
         {
-            options.AddPolicy("Admin", policy => policy.RequireRole("manager"));
-            options.AddPolicy("Student", policy => policy.RequireRole("student"));
-            options.AddPolicy("Developer", policy => policy.RequireRole("developer"));
+            options.AddPolicy("Manager", policy => policy.RequireRole("Manager"));
+            options.AddPolicy("Student", policy => policy.RequireRole("Student"));
+            options.AddPolicy("Developer", policy => policy.RequireRole("Developer"));
         });
     }
 

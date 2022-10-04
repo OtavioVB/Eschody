@@ -1,36 +1,46 @@
 ﻿using Eschody.Domain.Conctracts.Infrascructure.Repository;
 using Eschody.Domain.Models.DTOs;
 using Eschody.Infrascructure.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Eschody.Infrascructure.Repositories.Authentication;
 
 public class UserRepository : IUserRepository
 {
     private readonly DataContext _dataContext;
+    private readonly IMemoryCache _memoryCache;
 
-    public UserRepository(DataContext dataContext)
+    public UserRepository(DataContext dataContext, IMemoryCache memoryCache)
     {
         _dataContext = dataContext;
+        _memoryCache = memoryCache;
     }
 
-    public async Task DeleteUser(User user)
+    /// <summary>
+    /// Inserir novo usuário no banco de dados pelo repositório
+    /// </summary>
+    public async Task InsertNewUser(User user)
     {
-        _dataContext.Users!.Remove(user);
+        await _dataContext.Users.AddAsync(user);
         await _dataContext.SaveChangesAsync();
     }
 
-    public Task<User> GetUserInformation(Guid guid)
+    /// <summary>
+    /// Obter informações do usuário pelo seu ID
+    /// </summary>
+    /// <param name="id">Identificador do Usuário</param>
+    public async Task<User?> GetUserByIdentifierAsync(Guid id)
     {
-        throw new NotImplementedException();
-    }
+        var user = await _memoryCache.GetOrCreate("GetUserByIdentifierAsync" + id.ToString(), entry =>
+        {
+            entry.SlidingExpiration = TimeSpan.FromSeconds(45);
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(60);
+            entry.SetPriority(CacheItemPriority.High);
+            var user = _dataContext.Users.Where(p => p.Identifier == id).FirstOrDefaultAsync();
+            return user;
+        });
 
-    public Task InsertNewUser(User user)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateUser(User user)
-    {
-        throw new NotImplementedException();
+        return user;
     }
 }

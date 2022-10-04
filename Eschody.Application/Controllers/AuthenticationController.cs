@@ -1,8 +1,9 @@
 ﻿using Eschody.Domain.Conctracts.Infrascructure.Repository;
-using Eschody.Domain.Conctracts.Services;
+using Eschody.Domain.Models.ENUMs;
+using Eschody.Domain.Models.ValueObjects;
+using Eschody.Services.Handlers.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Eschody.Application.Controllers;
@@ -10,13 +11,12 @@ namespace Eschody.Application.Controllers;
 [ApiController]
 public class AuthenticationController : ControllerBase
 {
-    private readonly IUserRepository _userRepository;
+    private readonly HandlerCreateStudentAccount _handlerCreateStudentAccount;
 
-    public AuthenticationController([FromServices] IUserRepository userRepository)
+    public AuthenticationController(HandlerCreateStudentAccount handlerCreateStudentAccount)
     {
-        _userRepository = userRepository;
+        _handlerCreateStudentAccount = handlerCreateStudentAccount;
     }
-
     /// <summary>
     /// Método para criar conta de autenticação de aluno da plataforma
     /// </summary>
@@ -31,20 +31,21 @@ public class AuthenticationController : ControllerBase
     /// <response code="404"><b>Not Found</b> - Retorna que a informação não foi possível de ser encontrada</response>
     /// <response code="500"><b>Internal Error</b> - Retorna um erro interno do servidor</response>
     [HttpPost][AllowAnonymous][Produces("application/json")][Route("api/v1/[controller]/Student/Create")]
-    public IActionResult CreateStudentAccount(
+    public async Task<ResponseCreateStudentAccount> CreateStudentAccount(
         [FromHeader][Required] string nickname,
         [FromHeader][Required] string name,
         [FromHeader][Required] string passwordNotEncrypted,
         [FromHeader][Required] string email)
     {
-        return StatusCode(200);
+        var response = await _handlerCreateStudentAccount.Handle(new RequestCreateStudentAccount(new Name(name), new Email(email), new Nickname(nickname), new PasswordNotEncrypted(passwordNotEncrypted), new Role(RolesEnum.Student)));
+        return response;
     }
 
     [HttpPost]
     [Authorize]
     [Route("api/v1/[controller]/Admin/Create")]
-    public IResponse CreateAdminAccount()
+    public IActionResult CreateAdminAccount()
     {
-        return null;
+        return Ok("tESTE");
     }
 }
