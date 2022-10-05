@@ -1,4 +1,5 @@
 ﻿using Flunt.Validations;
+using static Eschody.Domain.Models.ValueObjects.Assertions;
 
 namespace Eschody.Domain.Models.ValueObjects;
 
@@ -54,9 +55,25 @@ public static class Assertions
         public static Contract Create(string nickname)
         {
             return new Contract()
-                .IsNotNullOrWhiteSpace(nickname, "Nome", "O seu nome não pode ser nulo ou conter espaços em branco.")
+                .IsNullOrWhiteSpace(nickname, "Nome", "O seu nome não pode ser nulo ou conter espaços em branco.")
                 .IsLowerOrEqualsThan(5, nickname.Length, "Nome", "O nome de usuário pode conter no mínimo 5 caracteres.")
-                .IsGreaterOrEqualsThan(25, nickname.Length, "Nome", "O nome de usuário pode conter no máximo 25 caracteres.");
+                .IsGreaterOrEqualsThan(25, nickname.Length, "Nome", "O nome de usuário pode conter no máximo 25 caracteres.")
+                .IsTrue(VerifyExistsOnlyLetters(nickname), "Nome", "O nome deve conter apenas letras como caracteres.");
+        }
+
+        private static bool VerifyExistsOnlyLetters(string name)
+        {
+            var characters = name.ToCharArray();
+
+            foreach (var character in characters)
+            {
+                if (char.IsLetter(character) is false && char.IsWhiteSpace(character) is false)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 

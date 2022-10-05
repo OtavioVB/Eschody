@@ -16,9 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\" />
     <Folder Include="Infrascructure\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Eschody.Domain\Eschody.Domain.csproj" />
   </ItemGroup>
 
 </Project>
