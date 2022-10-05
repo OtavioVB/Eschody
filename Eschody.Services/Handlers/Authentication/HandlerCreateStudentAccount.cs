@@ -5,6 +5,7 @@ using Eschody.Domain.Models.ENUMs;
 using Eschody.Domain.Models.ValueObjects;
 using Eschody.Services.Security;
 using Flunt.Notifications;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Eschody.Services.Handlers.Authentication;
 
@@ -13,7 +14,7 @@ public class HandlerCreateStudentAccount : Notifiable
     private readonly IUserRepository _userRepository;
     private readonly EncrypterHash _encrypterHash;
 
-    public HandlerCreateStudentAccount(IUserRepository userRepository, EncrypterHash encrypterHash)
+    public HandlerCreateStudentAccount([FromServices] IUserRepository userRepository, EncrypterHash encrypterHash)
     {
         _userRepository = userRepository;
         _encrypterHash = encrypterHash; 
@@ -37,10 +38,20 @@ public class HandlerCreateStudentAccount : Notifiable
             return response;
         }
 
-        var userAccount = new User();
+        var userAccount = new User()
+        {
+            Identifier = userEntity.Identifier,
+            Email = userEntity.Email.ToString(),
+            Name = userEntity.Name.ToString(),
+            Nickname = userEntity.Nickname.ToString(),
+            Password = userEntity.Password.ToString(),
+            RegisteredOn = userEntity.RegisteredOn,
+            Role = userEntity.Role.ToString()
+        };
 
         await _userRepository.InsertNewUser(userAccount);
 
-        throw new NotImplementedException();
+        var responseSuccess = new ResponseCreateStudentAccount(new StatusAPICode(StatusAPIEnum.Ok), new Message("Requisição realizada com sucesso!"),new Localization("\"Authentication.Student.Create.HandlerCreateStudentAccount.SendRepository.Sucess"), Notifications);
+        return responseSuccess;
     }
 }

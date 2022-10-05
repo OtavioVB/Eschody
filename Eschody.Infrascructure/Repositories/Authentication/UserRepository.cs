@@ -43,4 +43,9 @@ public class UserRepository : IUserRepository
 
         return user;
     }
+
+    public async Task<List<User>> GetAllUsers()
+    {
+        return await _dataContext.Users.ToListAsync();
+    }
 }

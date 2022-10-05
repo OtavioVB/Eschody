@@ -12,10 +12,12 @@ namespace Eschody.Application.Controllers;
 public class AuthenticationController : ControllerBase
 {
     private readonly HandlerCreateStudentAccount _handlerCreateStudentAccount;
+    private readonly IUserRepository _userRepository;   
 
-    public AuthenticationController(HandlerCreateStudentAccount handlerCreateStudentAccount)
+    public AuthenticationController([FromServices] HandlerCreateStudentAccount handlerCreateStudentAccount, [FromServices] IUserRepository userRepository)
     {
         _handlerCreateStudentAccount = handlerCreateStudentAccount;
+        _userRepository = userRepository;
     }
     /// <summary>
     /// Método para criar conta de autenticação de aluno da plataforma
@@ -30,7 +32,7 @@ public class AuthenticationController : ControllerBase
     /// <response code="403"><b>Forbidden</b> - Retorna que o usuário não tem acesso a essa região do servidor</response>
     /// <response code="404"><b>Not Found</b> - Retorna que a informação não foi possível de ser encontrada</response>
     /// <response code="500"><b>Internal Error</b> - Retorna um erro interno do servidor</response>
-    [HttpPost][AllowAnonymous][Produces("application/json")][Route("api/v1/[controller]/Student/Create")]
+    [HttpPost][AllowAnonymous][Route("api/v1/[controller]/Student/Create")]
     public async Task<ResponseCreateStudentAccount> CreateStudentAccount(
         [FromHeader][Required] string nickname,
         [FromHeader][Required] string name,
@@ -47,5 +49,13 @@ public class AuthenticationController : ControllerBase
     public IActionResult CreateAdminAccount()
     {
         return Ok("tESTE");
+    }
+
+    [HttpGet]
+    [AllowAnonymous]
+    [Route("api/v1/[controller]/Admin/GetAll")]
+    public async Task<IActionResult> GetAllUsers()
+    {
+        return Ok(await _userRepository.GetAllUsers());
     }
 }

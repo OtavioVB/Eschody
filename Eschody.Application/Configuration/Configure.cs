@@ -1,8 +1,10 @@
 ﻿using Eschody.Domain.Conctracts.Infrascructure.Repository;
+using Eschody.Infrascructure.Data;
 using Eschody.Infrascructure.Repositories.Authentication;
 using Eschody.Services.Handlers.Authentication;
 using Eschody.Services.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -35,6 +37,11 @@ public static class Configure
             var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             c.IncludeXmlComments(xmlPath);
         });
+    }
+
+    public static void SetUpDataContext(WebApplicationBuilder builder)
+    {
+        builder.Services.AddDbContext<DataContext>(options => options.UseSqlite("Data Source=eschody.db", b => b.MigrationsAssembly("Eschody.Application")));
     }
 
     public static void SetUpDependencies(WebApplicationBuilder builder)
@@ -89,7 +96,6 @@ public static class Configure
     {
         app.UseSwagger();
         app.UseSwaggerUI();
-        app.UseHttpsRedirection();
 
         app.UseAuthentication();
         app.UseAuthorization();
