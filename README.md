@@ -6,7 +6,13 @@ O Eschody é uma plataforma open-source para estudantes que estão em processo de 
 
 - Otávio Villas Boas;
 
+## Arquitetura
+
+- Clean Archi
+
 ## Dependências
 
-- Flunt v3 (Preview);
 - .NET 6;
+- JWT Bearer;
+- Flunt v3 (Preview);
+- Entity Framework Core;
