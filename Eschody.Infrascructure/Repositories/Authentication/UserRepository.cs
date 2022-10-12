@@ -15,6 +15,8 @@ public class UserRepository : IUserRepository
     {
         _dataContext = dataContext;
         _memoryCache = memoryCache;
+
+        _dataContext.Database.EnsureCreated();
     }
 
     /// <summary>

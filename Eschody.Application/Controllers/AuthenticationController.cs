@@ -19,6 +19,7 @@ public class AuthenticationController : ControllerBase
         _handlerCreateStudentAccount = handlerCreateStudentAccount;
         _userRepository = userRepository;
     }
+
     /// <summary>
     /// Método para criar conta de autenticação de aluno da plataforma
     /// </summary>
@@ -41,21 +42,5 @@ public class AuthenticationController : ControllerBase
     {
         var response = await _handlerCreateStudentAccount.Handle(new RequestCreateStudentAccount(new Name(name), new Email(email), new Nickname(nickname), new PasswordNotEncrypted(passwordNotEncrypted), new Role(RolesEnum.Student)));
         return response;
-    }
-
-    [HttpPost]
-    [Authorize]
-    [Route("api/v1/[controller]/Admin/Create")]
-    public IActionResult CreateAdminAccount()
-    {
-        return Ok("tESTE");
-    }
-
-    [HttpGet]
-    [AllowAnonymous]
-    [Route("api/v1/[controller]/Admin/GetAll")]
-    public async Task<IActionResult> GetAllUsers()
-    {
-        return Ok(await _userRepository.GetAllUsers());
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿using System.Runtime.Intrinsics.Arm;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Eschody.Services.Security;
 
@@ -17,7 +19,11 @@ public class EncrypterHash
     /// <returns></returns>
     public string Encrypt(string value)
     {
-        return "null";
+        var encodedValue = Encoding.UTF8.GetBytes(value);
+        var encryptedPassword = hashAlgorithm.ComputeHash(encodedValue);
+        var sb = new StringBuilder();
+        foreach (var caracter in encryptedPassword) sb.Append(caracter.ToString("X2"));
+        return sb.ToString();
     }
 
 
@@ -26,8 +32,15 @@ public class EncrypterHash
     /// </summary>
     /// <param name="valueEncrypted">Valor Encriptado com Hashing</param>
     /// <param name="valueNotEncrypted">Valor Não Encriptado</param>
-    public string VerifyInformationEncrypted(string valueEncrypted, string valueNotEncrypted)
+    public bool VerifyInformationEncrypted(string valueEncrypted, string valueNotEncrypted)
     {
-        return "Need To Implement";
+        if (valueEncrypted == Encrypt(valueNotEncrypted))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

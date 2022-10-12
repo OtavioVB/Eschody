@@ -55,7 +55,7 @@ public static class Assertions
         public static Contract Create(string nickname)
         {
             return new Contract()
-                .IsNullOrWhiteSpace(nickname, "Nome", "O seu nome não pode ser nulo ou conter espaços em branco.")
+                .IsNotNullOrWhiteSpace(nickname, "Nome", "O seu nome de usuário não pode ser nulo ou conter espaços em branco.")
                 .IsLowerOrEqualsThan(5, nickname.Length, "Nome", "O nome de usuário pode conter no mínimo 5 caracteres.")
                 .IsGreaterOrEqualsThan(25, nickname.Length, "Nome", "O nome de usuário pode conter no máximo 25 caracteres.")
                 .IsTrue(VerifyExistsOnlyLetters(nickname), "Nome", "O nome deve conter apenas letras como caracteres.");
