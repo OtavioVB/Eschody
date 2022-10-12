@@ -40,4 +40,20 @@ public class AssignmentRepository
     {
         return await _dataContext.Assignments.Where(p => p.Identifier == assignmnetIdentifier).FirstOrDefaultAsync();
     }
+
+    /// <summary>
+    /// Obter a lista de tarefas que ainda não foram feitas
+    /// </summary>
+    public async Task<List<Assignment>> GetAssignmentsNotDoneAsync(Guid userIdentifier)
+    {
+        return await _dataContext.Assignments.AsNoTracking().Include("User").Where(p => p.User.Identifier == userIdentifier && p.Done == false).ToListAsync();
+    }
+
+    /// <summary>
+    /// Obter a lista de tarefas que foram realizadas
+    /// </summary>
+    public async Task<List<Assignment>> GetAssignmentsDoneAsync(Guid userIdentifier)
+    {
+        return await _dataContext.Assignments.AsNoTracking().Include("User").Where(p => p.User.Identifier == userIdentifier && p.Done == true).ToListAsync();
+    }
 }
