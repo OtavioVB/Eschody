@@ -1,7 +1,9 @@
 ﻿using Eschody.Domain.Contracts.Infrascructure.Repository;
+using Eschody.Domain.Contracts.Services.Handlers;
 using Eschody.Domain.Models.ENUMs;
 using Eschody.Domain.Models.ValueObjects;
 using Eschody.Services.Handlers.Authentication.Create;
+using Eschody.Services.Handlers.Authentication.Login;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -11,10 +13,12 @@ namespace Eschody.Application.Controllers;
 [ApiController]
 public class AuthenticationController : ControllerBase
 {
-    private readonly HandlerCreateStudentAccount _handlerCreateStudentAccount;
+    private readonly IHandler<ResponseCreateStudentAccount, RequestCreateStudentAccount> _handlerCreateStudentAccount;
+    private readonly IHandler<ResponseLoginStudentAccount, RequestLoginStudentAccount> _handlerLoginStudentAccount;
 
-    public AuthenticationController([FromServices] HandlerCreateStudentAccount handlerCreateStudentAccount)
+    public AuthenticationController([FromServices] IHandler<ResponseCreateStudentAccount, RequestCreateStudentAccount> handlerCreateStudentAccount, [FromServices] IHandler<ResponseLoginStudentAccount, RequestLoginStudentAccount> handlerLoginStudentAccount)
     {
+        _handlerLoginStudentAccount = handlerLoginStudentAccount;
         _handlerCreateStudentAccount = handlerCreateStudentAccount;
     }
 
@@ -32,7 +36,7 @@ public class AuthenticationController : ControllerBase
     /// <response code="404"><b>Not Found</b> - Retorna que a informação não foi possível de ser encontrada</response>
     /// <response code="500"><b>Internal Error</b> - Retorna um erro interno do servidor</response>
     [HttpPost][AllowAnonymous][Route("api/v1/[controller]/Student/Create")]
-    public async Task<ResponseCreateStudentAccount> CreateStudentAccount(
+    public async Task<ResponseCreateStudentAccount> CreateStudentAccountAsync(
         [FromHeader][Required] string nickname,
         [FromHeader][Required] string name,
         [FromHeader][Required] string passwordNotEncrypted,
@@ -52,8 +56,8 @@ public class AuthenticationController : ControllerBase
     /// <response code="404"><b>Not Found</b> - Retorna que a informação não foi possível de ser encontrada</response>
     /// <response code="500"><b>Internal Error</b> - Retorna um erro interno do servidor</response>
     [HttpGet][AllowAnonymous][Route("api/v1/[controller]/Student/Login")]
-    public async Task<IActionResult> LoginStudentAccount()
+    public async Task<ResponseLoginStudentAccount> LoginStudentAccountWithUsernameAsync([FromHeader][Required] string nickname, [FromHeader][Required] string password)
     {
-        return StatusCode(200);
+        return await _handlerLoginStudentAccount.Handle(new RequestLoginStudentAccount(Guid.NewGuid(), DateTime.Now, new Nickname(nickname), new PasswordNotEncrypted(password)));
     }
 }

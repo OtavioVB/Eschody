@@ -1,8 +1,14 @@
 ﻿using Eschody.Domain.Contracts.Infrascructure.Repository;
+using Eschody.Domain.Contracts.Services.Handlers;
+using Eschody.Domain.Contracts.Services.Mail;
+using Eschody.Domain.Contracts.Services.Security;
+using Eschody.Domain.Contracts.Services.Token;
 using Eschody.Infrascructure.Data;
 using Eschody.Infrascructure.Repositories.Authentication;
 using Eschody.Services.Handlers.Authentication.Create;
+using Eschody.Services.Handlers.Authentication.Login;
 using Eschody.Services.Security;
+using Eschody.Services.Token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -46,11 +52,11 @@ public static class Configure
 
     public static void SetUpDependencies(WebApplicationBuilder builder)
     {
-        builder.Services.AddTransient<HandlerCreateStudentAccount>();
-
+        builder.Services.AddSingleton<ITokenService, TokenService>();
+        builder.Services.AddSingleton<IHashEncrypter, EncrypterHash>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
-
-        builder.Services.AddSingleton<EncrypterHash>();
+        builder.Services.AddTransient<IHandler<ResponseCreateStudentAccount, RequestCreateStudentAccount>, HandlerCreateStudentAccount>();
+        builder.Services.AddTransient<IHandler<ResponseLoginStudentAccount, RequestLoginStudentAccount>, HandlerLoginStudentAccount>();
     }
 
     public static void SetUpJwtBearer(WebApplicationBuilder builder)

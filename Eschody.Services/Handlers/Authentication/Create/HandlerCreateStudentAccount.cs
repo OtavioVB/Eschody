@@ -1,5 +1,6 @@
 ﻿using Eschody.Domain.Contracts.Infrascructure.Repository;
 using Eschody.Domain.Contracts.Services.Handlers;
+using Eschody.Domain.Contracts.Services.Security;
 using Eschody.Domain.Models.DTOs;
 using Eschody.Domain.Models.Entities;
 using Eschody.Domain.Models.ENUMs;
@@ -13,9 +14,9 @@ namespace Eschody.Services.Handlers.Authentication.Create;
 public class HandlerCreateStudentAccount : Notifiable, IHandler<ResponseCreateStudentAccount, RequestCreateStudentAccount>
 {
     private readonly IUserRepository _userRepository;
-    private readonly EncrypterHash _encrypterHash;
+    private readonly IHashEncrypter _encrypterHash;
 
-    public HandlerCreateStudentAccount([FromServices] IUserRepository userRepository, EncrypterHash encrypterHash)
+    public HandlerCreateStudentAccount([FromServices] IUserRepository userRepository, IHashEncrypter encrypterHash)
     {
         _userRepository = userRepository;
         _encrypterHash = encrypterHash;

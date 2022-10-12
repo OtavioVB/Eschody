@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Conctracts\Domain\" />
+    <Folder Include="Contracts\Domain\" />
   </ItemGroup>
 
   <ItemGroup>

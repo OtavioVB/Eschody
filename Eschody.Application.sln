@@ -20,6 +20,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentação", "Documenta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eschody.Notification", "Eschody.Notification\Eschody.Notification.csproj", "{E9FA8C39-62FA-4B4F-83D5-4C872EA1DC46}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fluxo de Trabalho", "Fluxo de Trabalho", "{D2A14CE1-9ED9-46DA-96C0-9358B80452D3}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\main_eschody.yml = .github\workflows\main_eschody.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
