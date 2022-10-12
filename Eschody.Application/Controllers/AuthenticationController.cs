@@ -4,6 +4,7 @@ using Eschody.Domain.Models.ENUMs;
 using Eschody.Domain.Models.ValueObjects;
 using Eschody.Services.Handlers.Authentication.Create;
 using Eschody.Services.Handlers.Authentication.Login;
+using Flunt.Notifications;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -58,6 +59,14 @@ public class AuthenticationController : ControllerBase
     [HttpGet][AllowAnonymous][Route("api/v1/[controller]/Student/Login")]
     public async Task<ResponseLoginStudentAccount> LoginStudentAccountWithUsernameAsync([FromHeader][Required] string nickname, [FromHeader][Required] string password)
     {
-        return await _handlerLoginStudentAccount.Handle(new RequestLoginStudentAccount(Guid.NewGuid(), DateTime.Now, new Nickname(nickname), new PasswordNotEncrypted(password)));
+
+        try
+        {
+            return await _handlerLoginStudentAccount.Handle(new RequestLoginStudentAccount(Guid.NewGuid(), DateTime.Now, new Nickname(nickname), new PasswordNotEncrypted(password)));
+        }
+        catch (Exception ex)
+        {
+            return new ResponseLoginStudentAccount(Guid.NewGuid(), "500", ex.Message, ex.Source, new List<Notification>());
+        }
     }
 }
