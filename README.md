@@ -8,7 +8,12 @@ O Eschody é uma plataforma open-source para estudantes que estão em processo de 
 
 ## Arquitetura
 
-- Clean Archi
+- Clean Architecture
+- Command Pattern
+- Notification Pattern
+- Repository Pattern
+- Dependency Injection
+- Inversion of Control
 
 ## Dependências
 
