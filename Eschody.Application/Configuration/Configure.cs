@@ -61,13 +61,9 @@ public static class Configure
 
     public static void SetUpJwtBearer(WebApplicationBuilder builder)
     {
-        string jwtKey;
+        string jwtKey = "ddsa45ds4d5as145x1135454x251fd54s5f454ar4v4y5tr4v56vvwe4r5v45c45edwc54";
 
-        if (Environment.GetEnvironmentVariable("ESCHODY_JWT_BEARER_KEY") == null)
-        {
-            throw new Exception("INTERNAL ERROR: JWT Bearer Key not implemented");
-        }
-        else
+        if (Environment.GetEnvironmentVariable("ESCHODY_JWT_BEARER_KEY") != null)
         {
             jwtKey = Environment.GetEnvironmentVariable("ESCHODY_JWT_BEARER_KEY")!.ToString();
         }
