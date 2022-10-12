@@ -105,7 +105,6 @@ public static class Configure
 
         app.UseAuthentication();
         app.UseAuthorization();
-        app.UseHttpsRedirection();
         app.MapControllers();
     }
 
