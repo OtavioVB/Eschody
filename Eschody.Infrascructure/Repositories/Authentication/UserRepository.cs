@@ -1,5 +1,6 @@
-﻿using Eschody.Domain.Conctracts.Infrascructure.Repository;
+﻿using Eschody.Domain.Contracts.Infrascructure.Repository;
 using Eschody.Domain.Models.DTOs;
+using Eschody.Domain.Models.ValueObjects;
 using Eschody.Infrascructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -46,8 +47,23 @@ public class UserRepository : IUserRepository
         return user;
     }
 
+    /// <summary>
+    /// Obter a lista de todos usuários presentes no banco de dados
+    /// </summary>
     public async Task<List<User>> GetAllUsers()
     {
         return await _dataContext.Users.ToListAsync();
+    }
+
+    /// <summary>
+    /// Obter usuário presente no banco de dados por meio do nome de usuário e uma senha
+    /// </summary>
+    /// <param name="nickname">Nome de Usuário</param>
+    /// <param name="passwordEncrypted">Senha Encriptada</param>
+    /// <returns></returns>
+    /// <remarks>Necessário que a senha esteja encriptada!</remarks>
+    public async Task<User?> GetUserAsync(Nickname nickname, PasswordEncrypted passwordEncrypted)
+    {
+        return await _dataContext.Users.Where(p => p.Nickname == nickname.ToString() && p.Password == passwordEncrypted.ToString()).FirstOrDefaultAsync();
     }
 }

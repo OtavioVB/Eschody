@@ -1,4 +1,6 @@
-﻿using Eschody.Domain.Conctracts.Infrascructure.Repository;
+﻿using Eschody.Domain.Contracts.Infrascructure.Repository;
+using Eschody.Domain.Contracts.Services.Handlers;
+using Eschody.Domain.Contracts.Services.Security;
 using Eschody.Domain.Models.DTOs;
 using Eschody.Domain.Models.Entities;
 using Eschody.Domain.Models.ENUMs;
@@ -7,17 +9,17 @@ using Eschody.Services.Security;
 using Flunt.Notifications;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Eschody.Services.Handlers.Authentication;
+namespace Eschody.Services.Handlers.Authentication.Create;
 
-public class HandlerCreateStudentAccount : Notifiable
+public class HandlerCreateStudentAccount : Notifiable, IHandler<ResponseCreateStudentAccount, RequestCreateStudentAccount>
 {
     private readonly IUserRepository _userRepository;
-    private readonly EncrypterHash _encrypterHash;
+    private readonly IHashEncrypter _encrypterHash;
 
-    public HandlerCreateStudentAccount([FromServices] IUserRepository userRepository, EncrypterHash encrypterHash)
+    public HandlerCreateStudentAccount([FromServices] IUserRepository userRepository, IHashEncrypter encrypterHash)
     {
         _userRepository = userRepository;
-        _encrypterHash = encrypterHash; 
+        _encrypterHash = encrypterHash;
     }
 
     public async Task<ResponseCreateStudentAccount> Handle(RequestCreateStudentAccount request)
@@ -51,7 +53,7 @@ public class HandlerCreateStudentAccount : Notifiable
 
         await _userRepository.InsertNewUser(userAccount);
 
-        var responseSuccess = new ResponseCreateStudentAccount(new StatusAPICode(StatusAPIEnum.Ok), new Message("Requisição realizada com sucesso!"),new Localization("\"Authentication.Student.Create.HandlerCreateStudentAccount.SendRepository.Sucess"), Notifications);
+        var responseSuccess = new ResponseCreateStudentAccount(new StatusAPICode(StatusAPIEnum.Ok), new Message("Requisição realizada com sucesso!"), new Localization("\"Authentication.Student.Create.HandlerCreateStudentAccount.SendRepository.Sucess"), Notifications);
         return responseSuccess;
     }
 }

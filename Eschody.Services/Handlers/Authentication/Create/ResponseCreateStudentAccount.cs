@@ -1,9 +1,10 @@
-﻿using Eschody.Domain.Models.ValueObjects;
+﻿using Eschody.Domain.Contracts.Services.Handlers;
+using Eschody.Domain.Models.ValueObjects;
 using Flunt.Notifications;
 
-namespace Eschody.Services.Handlers.Authentication;
+namespace Eschody.Services.Handlers.Authentication.Create;
 
-public class ResponseCreateStudentAccount : Notifiable
+public class ResponseCreateStudentAccount : Notifiable, IResponse
 {
     public Guid Identifier { get; private set; }
     public string StatusCode { get; private set; }

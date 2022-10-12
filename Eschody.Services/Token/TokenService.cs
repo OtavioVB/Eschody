@@ -1,4 +1,5 @@
-﻿using Eschody.Domain.Models.DTOs;
+﻿using Eschody.Domain.Contracts.Services.Token;
+using Eschody.Domain.Models.DTOs;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -9,7 +10,7 @@ namespace Eschody.Services.Token;
 /// <summary>
 /// Classe relacionado aos serviços de tokenização JWT Bearer
 /// </summary>
-public class TokenService
+public class TokenService : ITokenService
 {
     /// <summary>
     /// Método para gerar token
@@ -27,8 +28,12 @@ public class TokenService
         {
             Subject = new ClaimsIdentity(new[]
             {
-                new Claim("Nickname", user.Nickname!),
-                new Claim("Role", user.Role!)
+                new Claim("Identifier", user.Identifier.ToString()),
+                new Claim("Name", user.Name),
+                new Claim("Nickname", user.Nickname),
+                new Claim("Role", user.Role),
+                new Claim("Email", user.Email),
+                new Claim("RegisteredOn", user.RegisteredOn.ToString("dd/MM/yyyy HH:mm:ss"))
             }),
             Expires = DateTime.UtcNow.AddHours(8),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
