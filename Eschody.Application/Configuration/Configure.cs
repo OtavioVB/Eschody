@@ -1,7 +1,7 @@
 ﻿using Eschody.Domain.Conctracts.Infrascructure.Repository;
 using Eschody.Infrascructure.Data;
 using Eschody.Infrascructure.Repositories.Authentication;
-using Eschody.Services.Handlers.Authentication;
+using Eschody.Services.Handlers.Authentication.Create;
 using Eschody.Services.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;

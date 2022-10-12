@@ -1,7 +1,7 @@
 ﻿using Eschody.Domain.Conctracts.Infrascructure.Repository;
 using Eschody.Domain.Models.ENUMs;
 using Eschody.Domain.Models.ValueObjects;
-using Eschody.Services.Handlers.Authentication;
+using Eschody.Services.Handlers.Authentication.Create;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -12,12 +12,10 @@ namespace Eschody.Application.Controllers;
 public class AuthenticationController : ControllerBase
 {
     private readonly HandlerCreateStudentAccount _handlerCreateStudentAccount;
-    private readonly IUserRepository _userRepository;   
 
-    public AuthenticationController([FromServices] HandlerCreateStudentAccount handlerCreateStudentAccount, [FromServices] IUserRepository userRepository)
+    public AuthenticationController([FromServices] HandlerCreateStudentAccount handlerCreateStudentAccount)
     {
         _handlerCreateStudentAccount = handlerCreateStudentAccount;
-        _userRepository = userRepository;
     }
 
     /// <summary>
@@ -42,5 +40,20 @@ public class AuthenticationController : ControllerBase
     {
         var response = await _handlerCreateStudentAccount.Handle(new RequestCreateStudentAccount(new Name(name), new Email(email), new Nickname(nickname), new PasswordNotEncrypted(passwordNotEncrypted), new Role(RolesEnum.Student)));
         return response;
+    }
+
+    /// <summary>
+    /// Método para logar usuário na plataforma
+    /// </summary>
+    /// <response code="200"><b>Ok</b> - Retorna o resultado de uma requisição válida e esperada</response>
+    /// <response code="400"><b>Bad Request</b> - Retorna que a requisição é inválida</response>
+    /// <response code="401"><b>Unauthorized</b> - Retorna que o usuário não está autenticado</response>
+    /// <response code="403"><b>Forbidden</b> - Retorna que o usuário não tem acesso a essa região do servidor</response>
+    /// <response code="404"><b>Not Found</b> - Retorna que a informação não foi possível de ser encontrada</response>
+    /// <response code="500"><b>Internal Error</b> - Retorna um erro interno do servidor</response>
+    [HttpGet][AllowAnonymous][Route("api/v1/[controller]/Student/Login")]
+    public async Task<IActionResult> LoginStudentAccount()
+    {
+        return StatusCode(200);
     }
 }
