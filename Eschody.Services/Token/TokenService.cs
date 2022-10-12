@@ -1,4 +1,5 @@
-﻿using Eschody.Domain.Models.DTOs;
+﻿using Eschody.Domain.Contracts.Services.Token;
+using Eschody.Domain.Models.DTOs;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -9,7 +10,7 @@ namespace Eschody.Services.Token;
 /// <summary>
 /// Classe relacionado aos serviços de tokenização JWT Bearer
 /// </summary>
-public class TokenService
+public class TokenService : ITokenService
 {
     /// <summary>
     /// Método para gerar token

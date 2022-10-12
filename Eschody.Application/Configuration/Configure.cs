@@ -1,4 +1,4 @@
-﻿using Eschody.Domain.Conctracts.Infrascructure.Repository;
+﻿using Eschody.Domain.Contracts.Infrascructure.Repository;
 using Eschody.Infrascructure.Data;
 using Eschody.Infrascructure.Repositories.Authentication;
 using Eschody.Services.Handlers.Authentication.Create;

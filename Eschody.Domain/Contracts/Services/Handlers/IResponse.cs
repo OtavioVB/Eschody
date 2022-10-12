@@ -1,4 +1,4 @@
-﻿namespace Eschody.Domain.Conctracts.Services;
+﻿namespace Eschody.Domain.Contracts.Services.Handlers;
 
 public interface IResponse
 {

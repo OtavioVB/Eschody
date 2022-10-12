@@ -1,4 +1,4 @@
-﻿using Eschody.Domain.Conctracts.Infrascructure.Mappings;
+﻿using Eschody.Domain.Contracts.Infrascructure.Mappings;
 using Eschody.Domain.Models.DTOs;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

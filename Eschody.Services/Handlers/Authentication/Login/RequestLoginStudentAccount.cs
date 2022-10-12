@@ -1,4 +1,4 @@
-﻿using Eschody.Domain.Conctracts.Services;
+﻿using Eschody.Domain.Contracts.Services.Handlers;
 using Flunt.Notifications;
 
 namespace Eschody.Services.Handlers.Authentication.Login;

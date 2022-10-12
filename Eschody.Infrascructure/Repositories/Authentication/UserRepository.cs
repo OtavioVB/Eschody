@@ -1,4 +1,4 @@
-﻿using Eschody.Domain.Conctracts.Infrascructure.Repository;
+﻿using Eschody.Domain.Contracts.Infrascructure.Repository;
 using Eschody.Domain.Models.DTOs;
 using Eschody.Infrascructure.Data;
 using Microsoft.EntityFrameworkCore;

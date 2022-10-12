@@ -1,6 +1,6 @@
 ﻿using Eschody.Domain.Models.ValueObjects;
 
-namespace Eschody.Domain.Conctracts.Services;
+namespace Eschody.Domain.Contracts.Services.Handlers;
 
 public interface IRequest
 {

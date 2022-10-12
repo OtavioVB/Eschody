@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Eschody.Domain.Conctracts.Infrascructure.Mappings;
+namespace Eschody.Domain.Contracts.Infrascructure.Mappings;
 
 public interface IBaseMapping<T> where T : class
 {

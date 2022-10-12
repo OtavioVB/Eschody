@@ -1,9 +1,10 @@
-﻿using System.Security.Cryptography;
+﻿using Eschody.Domain.Contracts.Services.Security;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Eschody.Services.Security;
 
-public class EncrypterHash
+public class EncrypterHash : IHashEncrypter
 {
     /// <summary>
     /// Algoritmo de Hash utilizado

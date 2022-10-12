@@ -1,6 +1,6 @@
 ﻿using Eschody.Domain.Models.DTOs;
 
-namespace Eschody.Domain.Conctracts.Infrascructure.Repository;
+namespace Eschody.Domain.Contracts.Infrascructure.Repository;
 
 public interface IUserRepository
 {

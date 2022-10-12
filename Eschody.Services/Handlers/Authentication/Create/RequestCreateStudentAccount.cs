@@ -1,4 +1,4 @@
-﻿using Eschody.Domain.Conctracts.Services;
+﻿using Eschody.Domain.Contracts.Services.Handlers;
 using Eschody.Domain.Models.ValueObjects;
 using Flunt.Notifications;
 
