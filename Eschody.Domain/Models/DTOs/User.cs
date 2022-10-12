@@ -1,4 +1,6 @@
-﻿namespace Eschody.Domain.Models.DTOs;
+﻿using System.Text.Json.Serialization;
+
+namespace Eschody.Domain.Models.DTOs;
 
 public class User
 {
@@ -10,8 +12,11 @@ public class User
     public string Role { get; set; }
     public DateTime RegisteredOn { get; set; }
 
+    [JsonIgnore] public IEnumerable<Assignment> Assignments { get; set; }
+
     public User()
     {
+        Assignments = new List<Assignment>();
         Nickname = String.Empty;
         Name = String.Empty;
         Email = String.Empty;

@@ -11,6 +11,7 @@ namespace Eschody.Infrascructure.Data;
 public class DataContext : DbContext
 {
     public DbSet<User> Users { get; set; }
+    public DbSet<Assignment> Assignments { get; set; }
 
     public DataContext(DbContextOptions<DataContext> options)
       : base(options)
@@ -19,7 +20,10 @@ public class DataContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         IBaseMapping<User> userMapping = new UserMapping();
+        IBaseMapping<Assignment> assignmentMapping = new AssignmentMapping();
+
         userMapping.CreateMapping(modelBuilder.Entity<User>());
+        assignmentMapping.CreateMapping(modelBuilder.Entity<Assignment>());
 
         base.OnModelCreating(modelBuilder);
     }
