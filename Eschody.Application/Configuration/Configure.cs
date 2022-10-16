@@ -47,7 +47,7 @@ public static class Configure
 
     public static void SetUpDataContext(WebApplicationBuilder builder)
     {
-        builder.Services.AddDbContext<DataContext>(options => options.UseSqlite("Data Source=eschody.db", b => b.MigrationsAssembly("Eschody.Application")));
+        builder.Services.AddDbContext<DataContext>(options => options.UseSqlite($"Data Source={builder.Environment.WebRootPath}/eschody.db", b => b.MigrationsAssembly("Eschody.Application")));
     }
 
     public static void SetUpDependencies(WebApplicationBuilder builder)
@@ -105,7 +105,6 @@ public static class Configure
 
         app.UseAuthentication();
         app.UseAuthorization();
-        app.UseHttpsRedirection();
         app.MapControllers();
     }
 

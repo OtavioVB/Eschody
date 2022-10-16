@@ -12,7 +12,6 @@ public class Program
         Configure.SetUpDataContext(builder);
         Configure.SetUpServicesDependencies(builder);
         Configure.SetUpDependencies(builder);
-
         var app = builder.Build();
         Configure.SetUpWebApplicationDependencies(app);
         Configure.RunApplication(app);

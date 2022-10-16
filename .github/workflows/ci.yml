@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
     name: Debug All Project
-    environment: Compilação
+    environment: CompilaÃ§Ã£o
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
