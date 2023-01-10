@@ -32,8 +32,9 @@ public class Program
         builder.Services.AddScoped<BaseRepository<Assignment>, AssignmentRepository>();
 
         var app = builder.Build();
+        /*
         app.UseExceptionHandler("/Home/Error");
-        app.UseHsts();
+        app.UseHsts();*/
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
