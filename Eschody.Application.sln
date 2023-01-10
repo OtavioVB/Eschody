@@ -10,13 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentação", "Documenta
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fluxo de Trabalho", "Fluxo de Trabalho", "{D2A14CE1-9ED9-46DA-96C0-9358B80452D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVB.Project.Eschody.Monolithic.WebView", "OVB.Project.Eschody.Monolithic.WebView\OVB.Project.Eschody.Monolithic.WebView.csproj", "{40E7B8C8-43E2-411B-8368-5DEEC327B911}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Project.Eschody.Monolithic.Infrascructure.Data", "OVB.Project.Eschody.Monolithic.Infrascructure.Data\OVB.Project.Eschody.Monolithic.Infrascructure.Data.csproj", "{49FFEF5D-166A-428C-9DBA-EE8B61E28DA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVB.Project.Eschody.Monolithic.Infrascructure.Data", "OVB.Project.Eschody.Monolithic.Infrascructure.Data\OVB.Project.Eschody.Monolithic.Infrascructure.Data.csproj", "{49FFEF5D-166A-428C-9DBA-EE8B61E28DA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Project.Eschody.Monolithic.Domain", "OVB.Project.Eschody.Monolithic.Domain\OVB.Project.Eschody.Monolithic.Domain.csproj", "{0F8AEAF2-9940-4287-88F4-79DA02D8B687}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVB.Project.Eschody.Monolithic.Domain", "OVB.Project.Eschody.Monolithic.Domain\OVB.Project.Eschody.Monolithic.Domain.csproj", "{0F8AEAF2-9940-4287-88F4-79DA02D8B687}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVB.Project.Eschody.Monolithic.Services", "OVB.Project.Eschody.Monolithic.Services\OVB.Project.Eschody.Monolithic.Services.csproj", "{96A50EBB-0460-4837-8D16-7700CD728191}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVB.Project.Eschody.Monolithic.Services", "OVB.Project.Eschody.Monolithic.Services\OVB.Project.Eschody.Monolithic.Services.csproj", "{96A50EBB-0460-4837-8D16-7700CD728191}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVB.Project.Eschody.Monolithic.WebApi", "OVB.Project.Eschody.Monolithic.WebApi\OVB.Project.Eschody.Monolithic.WebApi.csproj", "{59390CCC-8BDD-44C8-B35F-A42713D83CD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{40E7B8C8-43E2-411B-8368-5DEEC327B911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40E7B8C8-43E2-411B-8368-5DEEC327B911}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40E7B8C8-43E2-411B-8368-5DEEC327B911}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40E7B8C8-43E2-411B-8368-5DEEC327B911}.Release|Any CPU.Build.0 = Release|Any CPU
 		{49FFEF5D-166A-428C-9DBA-EE8B61E28DA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{49FFEF5D-166A-428C-9DBA-EE8B61E28DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49FFEF5D-166A-428C-9DBA-EE8B61E28DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -40,6 +36,10 @@ Global
 		{96A50EBB-0460-4837-8D16-7700CD728191}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96A50EBB-0460-4837-8D16-7700CD728191}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96A50EBB-0460-4837-8D16-7700CD728191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59390CCC-8BDD-44C8-B35F-A42713D83CD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59390CCC-8BDD-44C8-B35F-A42713D83CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59390CCC-8BDD-44C8-B35F-A42713D83CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59390CCC-8BDD-44C8-B35F-A42713D83CD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
