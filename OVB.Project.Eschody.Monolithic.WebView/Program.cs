@@ -22,7 +22,7 @@ public class Program
         builder.Services.AddSingleton<IMapping<Account>, AccountMapping>();
         builder.Services.AddSingleton<IMapping<Assignment>, AssignmentMapping>();
 
-        builder.Services.AddDbContext<DataContext>(p => p.UseNpgsql(builder.Configuration.GetConnectionString("PostgreeSupaBaseConnection")!.ToString()));
+        builder.Services.AddDbContext<DataContext>(p => p.UseNpgsql(builder.Configuration.GetConnectionString("PostgreeSupaBaseConnection")!.ToString(), p => p.MigrationsAssembly("OVB.Project.Eschody.Monolithic.WebView")));
 
         // Infra - Repositories
         builder.Services.AddScoped<IBaseRepository<Account>, AccountRepository>();

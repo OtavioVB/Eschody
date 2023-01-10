@@ -29,7 +29,7 @@ public sealed class AssignmentMapping : IMapping<Assignment>
 
         entity.Property(p => p.CreatedOn)
             .IsRequired()
-            .HasColumnType("DATETIME");
+            .HasColumnType("TIMESTAMP");
 
         entity.Property(p => p.TypeStatusAssignment)
             .IsRequired()
@@ -41,6 +41,6 @@ public sealed class AssignmentMapping : IMapping<Assignment>
         entity.Property(p => p.Deadline)
             .IsRequired()
             .HasColumnType("DATE")
-            .HasConversion<string>(p => p.Date.ToShortDateString(), p => Convert.ToDateTime(p));
+            .HasConversion(p => p.Date, p => Convert.ToDateTime(p));
     }
 }
